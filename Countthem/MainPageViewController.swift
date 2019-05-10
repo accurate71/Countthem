@@ -33,8 +33,7 @@ class MainPageViewController: UIViewController {
         // MARK: Collection View
         let layout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
-            layout.minimumLineSpacing = 0
-            layout.itemSize = CGSize(width: 100, height: 100)
+            layout.itemSize = CGSize(width: 80, height: 80)
             layout.scrollDirection = .horizontal
             return layout
         }()
@@ -45,7 +44,7 @@ class MainPageViewController: UIViewController {
             collection.dataSource = self
             collection.delegate = self
             collection.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-            collection.backgroundColor = UIColor.white
+            collection.backgroundColor = UIColor.lightGray
             collection.translatesAutoresizingMaskIntoConstraints = false
             collection.isScrollEnabled = true
             return collection
@@ -71,6 +70,8 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! CategoryCollectionViewCell
+        cell.backgroundColor = UIColor.white
+        cell.layer.cornerRadius = 8
         
         return cell
     }
