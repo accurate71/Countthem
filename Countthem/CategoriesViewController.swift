@@ -11,6 +11,29 @@ import UIKit
 class CategoriesViewController: UIViewController {
     
     var categories = [Category]()
+    
+    let backgroundView: UIView = {
+        let view = UIView()
+        view.alpha = 0
+        view.backgroundColor = UIColor.black
+        view.layer.cornerRadius = 8
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    let deleteButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor.white
+        button.setImage(UIImage(named: "delete"), for: .normal)
+        button.alpha = 0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.imageEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
+        button.layer.cornerRadius = 4
+        return button
+    }()
+    
+    var index = Int()
+    var collectionView: UICollectionView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +84,13 @@ class CategoriesViewController: UIViewController {
             collection.backgroundColor = UIColor.white
             collection.translatesAutoresizingMaskIntoConstraints = false
             collection.isScrollEnabled = true
+            collection.allowsSelection = true
+            collection.allowsMultipleSelection = false
             return collection
         }()
         
         view.addSubview(collectionView)
+        self.collectionView = collectionView
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": collectionView]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: .init(), metrics: nil, views: ["v0": collectionView]))
     }
@@ -76,16 +102,78 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
     }
-    // TODO: Сделать нормальное отображение коллекции категории
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as? CategoryCollectionViewCell
         
-        cell?.imageView.image = UIImage(named: categories[indexPath.row].icon ?? "dinner")
-        cell?.nameCategoryLabel.text = categories[indexPath.row].name ?? "No cat"
-        cell?.nameCategoryLabel.textColor = UIColor.white
-        cell?.backgroundColor = UIColor.purple
-        cell?.layer.cornerRadius = 8
-        return cell!
+        if let cell = cell {
+            cell.imageView.image = UIImage(named: categories[indexPath.row].icon ?? "dinner")
+            cell.nameCategoryLabel.text = categories[indexPath.row].name ?? "No cat"
+            cell.nameCategoryLabel.textColor = UIColor.white
+            cell.backgroundColor = UIColor.purple
+            cell.layer.cornerRadius = 8
+            cell.layer.shadowColor = UIColor.purple.cgColor
+            cell.layer.shadowOpacity = 0.2
+            cell.layer.shadowOffset = .init(width: 1, height: 3)
+            cell.layer.shadowRadius = 1
+            cell.layer.cornerRadius = 8
+            cell.layer.borderWidth = 0.1
+            cell.layer.borderColor = UIColor.purple.cgColor
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        if let cell = cell {
+            UIView.animate(withDuration: 0.2) {
+                self.backgroundView.alpha = 0.5
+                self.deleteButton.alpha = 1
+            }
+            cell.addSubview(backgroundView)
+            backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeSubviews(sender:))))
+            cell.addSubview(deleteButton)
+            deleteButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeCategory(sender:))))
+            index = indexPath.row
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": backgroundView]))
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[v0]-25-|", options: .init(), metrics: nil, views: ["v0": deleteButton]))
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: .init(), metrics: nil, views: ["v0": backgroundView]))
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-25-[v0]-25-|", options: .init(), metrics: nil, views: ["v0": deleteButton]))
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        deleteButton.removeFromSuperview()
+        backgroundView.removeFromSuperview()
+    }
+    
+
+    // TODO: Сделать простую анимацию удаления
+    @objc func removeCategory(sender: UIButton) {
+        if let collection = self.collectionView {
+            
+            print("Index is \(index)")
+            CategoriesHelper().removeCategory(index: index)
+            categories.remove(at: index)
+            collection.reloadData()
+            
+        }
+    }
+    
+    @objc func removeSubviews(sender: UIView) {
+        print("Has been tapped")
+        
+        if self.backgroundView.alpha == 0 && self.deleteButton.alpha == 0 {
+            deleteButton.removeFromSuperview()
+            backgroundView.removeFromSuperview()
+        } else {
+            UIView.animate(withDuration: 0.2) {
+                self.backgroundView.alpha = 0
+                self.deleteButton.alpha = 0
+            }
+        }
     }
     
     

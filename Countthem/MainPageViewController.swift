@@ -55,6 +55,7 @@ class MainPageViewController: UIViewController {
             collection.backgroundColor = UIColor.white
             collection.translatesAutoresizingMaskIntoConstraints = false
             collection.isScrollEnabled = true
+            
             return collection
         }()
         
@@ -76,12 +77,13 @@ class MainPageViewController: UIViewController {
         self.view.addSubview(tableView)
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": tableView]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)]-[v1]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": tableView]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v1]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": tableView]))
     }
 
 
 }
-
+// TODO: Протестировать Категории, залить в репо
+// TODO: Начать работать над Расходами
 // MARK: Collection View Methods
 extension MainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     

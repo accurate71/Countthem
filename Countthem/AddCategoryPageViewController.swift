@@ -15,15 +15,14 @@ enum AlertError {
 
 class AddCategoryPageViewController: UIViewController {
     
-    var categories = [Category]()
     var name: String?
     var icon: String?
+    
+    // MARK: Category Icons Array
     var categoriesIcons = ["breakfast","bus","cinema",
                            "coffee","dinner",
                            "games","groceries","internet",
                            "lunch","mobile","shopping"]
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +31,6 @@ class AddCategoryPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        categories = CategoriesHelper().getCategories()
-        //setupViews()
         setupSuperview()
         setupViews()
     }
@@ -54,10 +51,6 @@ class AddCategoryPageViewController: UIViewController {
             CategoriesHelper().addCategory(name: name!, icon: icon!)
             navigationController?.popViewController(animated: true)
         }
-        
-        
-//        CategoriesHelper().addCategory(name: name!, icon: icon!)
-//        navigationController?.popViewController(animated: true)
     }
     /*
      Here is the method for Add Button Method
@@ -138,7 +131,7 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
         //TextField
         let textField: UITextField = {
             let field = UITextField()
-            field.placeholder = "Type a category name"
+            field.placeholder = "Category Name"
             field.translatesAutoresizingMaskIntoConstraints = false
             field.delegate = self
             field.clearButtonMode = .whileEditing
@@ -195,6 +188,17 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
                 return collectionViewCell
             default: fatalError()
             }
+        default:
+            fatalError()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Type a category name"
+        case 1:
+            return "Choose an icon"
         default:
             fatalError()
         }

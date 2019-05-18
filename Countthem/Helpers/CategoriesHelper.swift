@@ -41,8 +41,13 @@ class CategoriesHelper {
     }
     
     // MARK: Remove category Method
-    func removeCategory() {
-        
+    func removeCategory(index: Int) {
+        do {
+            categories = getCategories()
+            getContext().delete(categories[index])
+            categories.remove(at: index)
+            saveCategories()
+        }
     }
     
     // MARK: Save categories
