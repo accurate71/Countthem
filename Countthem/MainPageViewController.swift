@@ -69,20 +69,31 @@ class MainPageViewController: UIViewController {
             return table
         }()
         
+        // MARK: Separater View
+        let separatorView: UIView = {
+            let view = UIView()
+            view.backgroundColor = UIColor.purple
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.alpha = 0.2
+            return view
+        }()
+        
         
         
         
         // MARK: Adding views and constraits
         self.view.addSubview(myCollectionView)
+        self.view.addSubview(separatorView)
         self.view.addSubview(tableView)
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": tableView]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v1]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": tableView]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": separatorView]))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v1(0.5)][v2]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": separatorView, "v2": tableView]))
     }
 
 
 }
-// TODO: Протестировать Категории, залить в репо
+
 // TODO: Начать работать над Расходами
 // MARK: Collection View Methods
 extension MainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -111,6 +122,13 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
         cell.layer.borderColor = UIColor.purple.cgColor
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let category = categories[indexPath.row]
+        let addExpenseViewController = AddExpenseTableViewController()
+        addExpenseViewController.category = category
+        navigationController?.pushViewController(addExpenseViewController, animated: true)
     }
     
     

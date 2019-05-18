@@ -19,6 +19,8 @@
 		EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */; };
 		EA8170C422898E7200464744 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C322898E7200464744 /* CategoriesViewController.swift */; };
 		EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C52289918700464744 /* AddCategoryPageViewController.swift */; };
+		EAC85B452290540E007B0768 /* ExpensesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC85B442290540E007B0768 /* ExpensesHelper.swift */; };
+		EAC85B472290563F007B0768 /* AddExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA8170C322898E7200464744 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EA8170C52289918700464744 /* AddCategoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryPageViewController.swift; sourceTree = "<group>"; };
+		EAC85B442290540E007B0768 /* ExpensesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesHelper.swift; sourceTree = "<group>"; };
+		EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				EA06A0EA228BDD7D0010E6AB /* CategoriesHelper.swift */,
+				EAC85B442290540E007B0768 /* ExpensesHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -64,6 +69,7 @@
 				EA1D7B252288F993005B0BF1 /* SettingsPageViewController.swift */,
 				EA8170C322898E7200464744 /* CategoriesViewController.swift */,
 				EA8170C52289918700464744 /* AddCategoryPageViewController.swift */,
+				EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -194,8 +200,10 @@
 				EA1D7B232287ECD3005B0BF1 /* ExpenseTableViewCell.swift in Sources */,
 				EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */,
 				EA57498522842EA90058D576 /* MainPageViewController.swift in Sources */,
+				EAC85B472290563F007B0768 /* AddExpenseTableViewController.swift in Sources */,
 				EA57498322842EA90058D576 /* AppDelegate.swift in Sources */,
 				EA8170C422898E7200464744 /* CategoriesViewController.swift in Sources */,
+				EAC85B452290540E007B0768 /* ExpensesHelper.swift in Sources */,
 				EA57498B22842EA90058D576 /* Countthem.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
