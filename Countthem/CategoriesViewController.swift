@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class CategoriesViewController: UIViewController {
     
@@ -158,6 +159,12 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
             CategoriesHelper().removeCategory(index: index)
             categories.remove(at: index)
             collection.reloadData()
+            let transition = CATransition()
+            transition.type = CATransitionType.fade
+            transition.duration = 0.2
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
+            
+            collection.layer.add(transition, forKey: nil)
             
         }
     }
