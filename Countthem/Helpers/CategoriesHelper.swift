@@ -42,18 +42,18 @@ class CategoriesHelper {
     }
     
     // MARK: Remove category Method
-    func removeCategory(index: Int) {
+    func removeCategory(category: Category) {
         do {
             categories = getCategories()
             expenses = ExpensesHelper().getExpenses()
             for i in expenses {
-                if i.category == categories[index] {
+                if i.category == category {
                     ExpensesHelper().removeExpenses(expense: i)
                 }
             }
-            getContext().delete(categories[index])
-            categories.remove(at: index)
+            getContext().delete(category)
             saveCategories()
+            loadCategories()
         }
     }
     

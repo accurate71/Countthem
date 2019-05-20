@@ -156,7 +156,7 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         if let collection = self.collectionView {
             
             print("Index is \(index)")
-            CategoriesHelper().removeCategory(index: index)
+            CategoriesHelper().removeCategory(category: categories[index])
             categories.remove(at: index)
             collection.reloadData()
             let transition = CATransition()
