@@ -24,7 +24,7 @@ class ExpenseTableViewCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
         label.text = "Category"
-        label.font = label.font.withSize(17)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -34,7 +34,7 @@ class ExpenseTableViewCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
         label.text = "Expense"
-        label.font = label.font.withSize(14)
+        label.font = label.font.withSize(12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -44,17 +44,17 @@ class ExpenseTableViewCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = label.font.withSize(17)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
         label.text = "$0.5"
         return label
     }()
     
-    let data: UILabel = {
+    let date: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
-        label.textAlignment = .right
+        label.textAlignment = .left
         label.text = "Today"
-        label.textColor = UIColor.lightGray
+        label.textColor = UIColor.white
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = label.font.withSize(12)
         return label
@@ -82,37 +82,38 @@ class ExpenseTableViewCell: UITableViewCell {
     }
     
     func setupViews(){
-        
+        self.backgroundColor = UIColor.clear
         //making stack views
         let firstInfo: UIStackView = {
             let view = UIStackView(arrangedSubviews: [nameCategory,nameExpense])
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.setCustomSpacing(4, after: nameCategory)
             view.axis = .vertical
             return view
         }()
         
-        let secondInfo: UIStackView = {
-            let view = UIStackView(arrangedSubviews: [data, expensePrice])
+        let mainView: UIView = {
+            let view = UIView()
+            view.backgroundColor = UIColor.white
+            view.layer.cornerRadius = 8
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.setCustomSpacing(8, after: data)
-            view.axis = .vertical
             return view
         }()
         //adding views
-        addSubview(categoryImage)
-        addSubview(firstInfo)
-        addSubview(secondInfo)
+        mainView.addSubview(categoryImage)
+        mainView.addSubview(firstInfo)
+        mainView.addSubview(expensePrice)
         //adding constraits
         //horizontal
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0(40)]-16-[v1][v2]-|", options: .init(), metrics: nil, views: ["v0": categoryImage, "v1": firstInfo, "v2": secondInfo]))
-//        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]|", options: .init(), metrics: nil, views: ["v0": firstInfo]))
-//        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]-16-|", options: .init(), metrics: nil, views: ["v0": imageView]))
+        mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0(35)]-16-[v1][v2]-16-|", options: .init(), metrics: nil, views: ["v0": categoryImage, "v1": firstInfo, "v2": expensePrice]))
         //vertical
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0(40)]-16-|", options: .init(), metrics: nil, views: ["v0": categoryImage]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: .init(), metrics: nil, views: ["v0": firstInfo]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: .init(), metrics: nil, views: ["v0": secondInfo]))
-        
+        mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0(35)]-16-|", options: .init(), metrics: nil, views: ["v0": categoryImage]))
+        mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: .init(), metrics: nil, views: ["v0": firstInfo]))
+        mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: .init(), metrics: nil, views: ["v0": expensePrice]))
+        addSubview(date)
+        addSubview(mainView)
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": date]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": mainView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-4-[v1]|", options: .init(), metrics: nil, views: ["v0": date, "v1":mainView]))
         
     }
 

@@ -28,7 +28,6 @@ class SettingsPageViewController: UIViewController {
     }
     
     func setupNavigationBar() {
-        
         self.title = "Settings"
         navigationController?.navigationItem.title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -46,11 +45,11 @@ class SettingsPageViewController: UIViewController {
             return table
         }()
         
-        let logOutButton: UIButton = {
-            let button = UIButton()
-            button.setTitle("Log Out", for: .normal)
-            return button
-        }()
+//        let logOutButton: UIButton = {
+//            let button = UIButton()
+//            button.setTitle("Log Out", for: .normal)
+//            return button
+//        }()
         
         self.view.addSubview(menuTable)
         self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0":menuTable]))

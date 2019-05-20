@@ -52,6 +52,7 @@ class AddCategoryPageViewController: UIViewController {
             navigationController?.popViewController(animated: true)
         }
     }
+    
     /*
      Here is the method for Add Button Method
      which builds the alert with a specific message of an error
@@ -81,8 +82,6 @@ class AddCategoryPageViewController: UIViewController {
         self.title = "Add Category"
         view.backgroundColor = UIColor.white
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addButton(sender:)))
-        tabBarController?.tabBar.isHidden = true
-        tabBarController?.tabBar.isTranslucent = true
     }
     
     // MARK: Setting Views

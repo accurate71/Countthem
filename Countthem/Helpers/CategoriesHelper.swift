@@ -16,6 +16,7 @@ import CoreData
 class CategoriesHelper {
     
     var categories = [Category]()
+    var expenses = [Expense]()
     
     // MARK: Add category method
     func addCategory(name: String, icon: String) {
@@ -44,6 +45,12 @@ class CategoriesHelper {
     func removeCategory(index: Int) {
         do {
             categories = getCategories()
+            expenses = ExpensesHelper().getExpenses()
+            for i in expenses {
+                if i.category == categories[index] {
+                    ExpensesHelper().removeExpenses(expense: i)
+                }
+            }
             getContext().delete(categories[index])
             categories.remove(at: index)
             saveCategories()

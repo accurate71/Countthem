@@ -15,12 +15,13 @@ class ExpensesHelper {
     var expenses = [Expense]()
     
     // MARK: Add category method
-    func addCategory(name: String, price: Double, date: NSDate) {
+    func addExpense(name: String, price: Double, date: NSDate, category: Category) {
         let entity = NSEntityDescription.entity(forEntityName: "Expense", in: getContext())
         let expense = Expense(entity: entity!, insertInto: getContext())
         expense.setValue(name, forKey: "name")
         expense.setValue(price, forKey: "price")
         expense.setValue(date, forKey: "date")
+        expense.setValue(category, forKey: "category")
         saveExpenses()
         expenses.append(expense)
     }
@@ -39,12 +40,12 @@ class ExpensesHelper {
     }
     
     // MARK: Remove category Method
-    func removeCategory(index: Int) {
+    func removeExpenses(expense: Expense) {
         do {
-            expenses = getCategories()
-            getContext().delete(expenses[index])
-            expenses.remove(at: index)
+            expenses = getExpenses()
+            getContext().delete(expense)
             saveExpenses()
+            loadExpenses()
         }
     }
     
@@ -63,7 +64,7 @@ class ExpensesHelper {
         return managedContext
     }
     
-    func getCategories() -> [Expense] {
+    func getExpenses() -> [Expense] {
         loadExpenses()
         return expenses
     }

@@ -12,7 +12,7 @@
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expenses" inverseEntity="Category" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Expense" positionX="-54" positionY="9" width="128" height="105"/>
+        <element name="Category" positionX="-356.5234375" positionY="-51.96875" width="128" height="88"/>
+        <element name="Expense" positionX="-59.234375" positionY="-209.08984375" width="128" height="103"/>
     </elements>
 </model>

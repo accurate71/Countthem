@@ -11,6 +11,7 @@ import UIKit
 class MainPageViewController: UIViewController {
     
     var categories = [Category]()
+    var expenses = [Expense]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class MainPageViewController: UIViewController {
         super.viewWillAppear(animated)
         
         categories = CategoriesHelper().getCategories()
+        expenses = ExpensesHelper().getExpenses()
         
         setupNavigationBar()
         tabBarController?.tabBar.tintColor = UIColor.purple
@@ -36,6 +38,10 @@ class MainPageViewController: UIViewController {
     }
     
     func setupViews() {
+        self.view.backgroundColor = UIColor.gray
+        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isTranslucent = false
+        self.view.backgroundColor = UIColor.lightGray
         
         // MARK: Collection View
         let layout: UICollectionViewFlowLayout = {
@@ -64,8 +70,10 @@ class MainPageViewController: UIViewController {
             let table = UITableView()
             table.dataSource = self
             table.delegate = self
+            table.backgroundColor = UIColor.lightGray
             table.register(ExpenseTableViewCell.self, forCellReuseIdentifier: "TableViewCell")
             table.translatesAutoresizingMaskIntoConstraints = false
+            table.separatorStyle = .none
             return table
         }()
         
@@ -78,17 +86,45 @@ class MainPageViewController: UIViewController {
             return view
         }()
         
-        
-        
+        // MARK: messageView
+        let messageView: UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = UIColor.white
+            return view
+        }()
+        let messageLabel: UILabel = {
+            let label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.text = "Your list is empty. Add a new expense"
+            label.textColor = UIColor.lightGray
+            label.textAlignment = .center
+            label.font = label.font.withSize(14)
+            return label
+        }()
+        messageView.addSubview(messageLabel)
+        messageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0":messageLabel]))
+        messageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: .init(), metrics: nil, views: ["v0":messageLabel]))
         
         // MARK: Adding views and constraits
         self.view.addSubview(myCollectionView)
         self.view.addSubview(separatorView)
-        self.view.addSubview(tableView)
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": tableView]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": separatorView]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v1(0.5)][v2]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": separatorView, "v2": tableView]))
+        if expenses.isEmpty {
+            print("The expenses array is empty")
+            self.view.addSubview(messageView)
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": messageView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": separatorView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v1(0.5)][v2]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": separatorView, "v2": messageView]))
+        } else {
+            print("The expenses array isn't empty")
+            self.view.addSubview(tableView)
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: .init(), metrics: nil, views: ["v0": tableView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": separatorView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v1(0.5)][v2]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": separatorView, "v2": tableView]))
+        }
+        
     }
 
 
@@ -138,7 +174,7 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
 extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return expenses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -148,7 +184,13 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
             print("The cell is nil")
             return UITableViewCell()
         }
-        print("Items have been loaded")
+        guard let category = expenses[indexPath.row].category else { print("The category of the expense is nil"); return UITableViewCell()}
+        expense.categoryImage.image = UIImage(named: category.icon!)
+        expense.nameCategory.text = category.name!
+        expense.nameExpense.text = expenses[indexPath.row].name
+        expense.expensePrice.text = "\(expenses[indexPath.row].price)"
+        
+        
         
         return expense
     }
