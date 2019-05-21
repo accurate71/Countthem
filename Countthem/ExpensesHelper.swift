@@ -6,6 +6,11 @@
 //  Copyright © 2019 Kirill Pushkarskiy. All rights reserved.
 //
 
+/*
+ The class is a manager of Expenses. All the methods of Data Base which are wired with expenses are located here.
+ The manager can save, delete, add, load categories.
+ */
+
 import Foundation
 import CoreData
 import UIKit.UIApplication

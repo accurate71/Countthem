@@ -15,6 +15,7 @@ class MainPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +39,6 @@ class MainPageViewController: UIViewController {
     }
     
     func setupViews() {
-        self.view.backgroundColor = UIColor.gray
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
         self.view.backgroundColor = UIColor.lightGray
@@ -130,7 +130,6 @@ class MainPageViewController: UIViewController {
 
 }
 
-// TODO: Начать работать над Расходами
 // MARK: Collection View Methods
 extension MainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     

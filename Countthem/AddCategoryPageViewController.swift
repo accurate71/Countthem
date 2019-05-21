@@ -127,7 +127,7 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // MARK: Setup Views for TableView cells
-        //TextField
+        // Setup TextField
         let textField: UITextField = {
             let field = UITextField()
             field.placeholder = "Category Name"
@@ -136,7 +136,9 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
             field.clearButtonMode = .whileEditing
             return field
         }()
-        //Collection view
+        
+        // Setup Collection view
+        // Setup it's Layout
         let collectionViewLayout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
             layout.itemSize = CGSize(width: 80, height: 80)
@@ -144,7 +146,7 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
             layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
             return layout
         }()
-        
+        // Setup it's view
         let collectionView: UICollectionView = {
             let view = UICollectionView(frame: CGRect.init(), collectionViewLayout: collectionViewLayout)
             view.collectionViewLayout = collectionViewLayout
@@ -203,11 +205,11 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    
 }
 
 // MARK: Collection View Delegate and DataSource methods
 extension AddCategoryPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoriesIcons.count
     }
@@ -235,7 +237,6 @@ extension AddCategoryPageViewController: UICollectionViewDelegate, UICollectionV
         }
     }
     
-    
 }
 
 // MARK: TextField Delegate methods
@@ -245,34 +246,4 @@ extension AddCategoryPageViewController: UITextFieldDelegate {
         name = textField.text!
         return true
     }
-}
-
-class IconCollectionViewCell: UICollectionViewCell {
-    
-    let imageView: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = UIView.ContentMode.scaleAspectFit
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.image = UIImage(named: "games")
-        return view
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setupViews()
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupViews() {
-        
-        addSubview(imageView)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: .init(), metrics: nil, views: ["v0": imageView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[v0]-20-|", options: .init(), metrics: nil, views: ["v0": imageView]))
-    }
-    
 }
