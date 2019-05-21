@@ -20,6 +20,7 @@
 		EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */; };
 		EA8170C422898E7200464744 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C322898E7200464744 /* CategoriesViewController.swift */; };
 		EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C52289918700464744 /* AddCategoryPageViewController.swift */; };
+		EA901EFD2293DD900082C9EB /* AppAnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */; };
 		EAC85B452290540E007B0768 /* ExpensesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC85B442290540E007B0768 /* ExpensesHelper.swift */; };
 		EAC85B472290563F007B0768 /* AddExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA8170C322898E7200464744 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EA8170C52289918700464744 /* AddCategoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryPageViewController.swift; sourceTree = "<group>"; };
+		EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAnimationHelper.swift; sourceTree = "<group>"; };
 		EAC85B442290540E007B0768 /* ExpensesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesHelper.swift; sourceTree = "<group>"; };
 		EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +106,7 @@
 				EA06A0EA228BDD7D0010E6AB /* CategoriesHelper.swift */,
 				EAC85B442290540E007B0768 /* ExpensesHelper.swift */,
 				EA57498922842EA90058D576 /* Countthem.xcdatamodeld */,
+				EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			files = (
 				EA1D7B262288F993005B0BF1 /* SettingsPageViewController.swift in Sources */,
 				EA06A0EB228BDD7D0010E6AB /* CategoriesHelper.swift in Sources */,
+				EA901EFD2293DD900082C9EB /* AppAnimationHelper.swift in Sources */,
 				EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */,
 				EA1D7B232287ECD3005B0BF1 /* ExpenseTableViewCell.swift in Sources */,
 				EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */,

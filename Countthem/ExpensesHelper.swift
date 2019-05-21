@@ -50,7 +50,6 @@ class ExpensesHelper {
             expenses = getExpenses()
             getContext().delete(expense)
             saveExpenses()
-            loadExpenses()
         }
     }
     

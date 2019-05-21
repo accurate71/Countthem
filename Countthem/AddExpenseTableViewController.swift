@@ -54,6 +54,7 @@ class AddExpenseTableViewController: UITableViewController {
         if let name = name, let price = price, let category = category {
             print("I'm working")
             ExpensesHelper().addExpense(name: name, price: Double(price) as! Double, date: currentDate, category: category)
+            print("\(name), \(price),\(category)")
             navigationController?.popViewController(animated: true)
         }
     }

@@ -188,13 +188,7 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
             collection.reloadData()
             
             // Setup an animation
-            let transition = CATransition()
-            transition.type = CATransitionType.fade
-            transition.duration = 0.2
-            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.default)
-            
-            // Add the animation
-            collection.layer.add(transition, forKey: nil)
+            AppAnimationHelper().animationDeleting(for: collection)
             
         }
     }

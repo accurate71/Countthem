@@ -12,18 +12,23 @@ class MainPageViewController: UIViewController {
     
     var categories = [Category]()
     var expenses = [Expense]()
-
+    
+    var tableView = UITableView()
+    var index = Int()
+    
+    //label for navigation controller
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         categories = CategoriesHelper().getCategories()
+        print("\(categories.count)")
         expenses = ExpensesHelper().getExpenses()
-        
+        print("\(expenses.count)")
         setupNavigationBar()
         tabBarController?.tabBar.tintColor = UIColor.purple
         
@@ -35,7 +40,6 @@ class MainPageViewController: UIViewController {
         guard let navBar = navigationController?.navigationBar else {return}
         navBar.prefersLargeTitles = true
         navBar.isTranslucent = false
-        
     }
     
     func setupViews() {
@@ -76,6 +80,7 @@ class MainPageViewController: UIViewController {
             table.separatorStyle = .none
             return table
         }()
+        self.tableView = tableView
         
         // MARK: Separater View
         let separatorView: UIView = {
@@ -120,7 +125,7 @@ class MainPageViewController: UIViewController {
             print("The expenses array isn't empty")
             self.view.addSubview(tableView)
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
-            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: .init(), metrics: nil, views: ["v0": tableView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": tableView]))
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": separatorView]))
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v1(0.5)][v2]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": separatorView, "v2": tableView]))
         }
@@ -190,8 +195,13 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
         expense.expensePrice.text = "\(expenses[indexPath.row].price)"
         
         
-        
         return expense
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ExpensesHelper().removeExpenses(expense: expenses[indexPath.row])
+        expenses.remove(at: indexPath.row)
+        tableView.reloadData()
     }
     
     

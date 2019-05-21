@@ -74,12 +74,6 @@ class ExpenseTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func setupViews(){
         self.backgroundColor = UIColor.clear
@@ -111,8 +105,8 @@ class ExpenseTableViewCell: UITableViewCell {
         mainView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-|", options: .init(), metrics: nil, views: ["v0": expensePrice]))
         addSubview(date)
         addSubview(mainView)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": date]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": mainView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: .init(), metrics: nil, views: ["v0": date]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: .init(), metrics: nil, views: ["v0": mainView]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0]-4-[v1]|", options: .init(), metrics: nil, views: ["v0": date, "v1":mainView]))
         
     }
