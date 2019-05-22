@@ -54,7 +54,7 @@ class ExpenseTableViewCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .left
         label.text = "Today"
-        label.textColor = UIColor.white
+        label.textColor = UIColor.init(hexString: AppDesingHelper().dateColor)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = label.font.withSize(12)
         return label

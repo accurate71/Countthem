@@ -27,18 +27,13 @@ class AddExpenseTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // MARK: Setup Navigation Bar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addExpenseAction(sender:)))
-        navigationController?.navigationBar.prefersLargeTitles = false
-        title = "Add Expense"
+        if let navbar = navigationController?.navigationBar, let tabBar = tabBarController?.tabBar {
+            setupNavBar(navbar)
+            setupTabbar(tabBar)
+        }
+        setupTableView()
         
-        // MARK: Setup Table View
-        tableView = UITableView.init(frame: CGRect.init(), style: .grouped)
-        tableView.allowsSelection = false
         
-        // MARK: Setup Tab Bar
-        tabBarController?.tabBar.isHidden = true
-        tabBarController?.tabBar.isTranslucent = true
     }
     
     // The action method is created for Right Bar Button "Add"
@@ -53,7 +48,8 @@ class AddExpenseTableViewController: UITableViewController {
         name = textfiled1.text
         if let name = name, let price = price, let category = category {
             print("I'm working")
-            ExpensesHelper().addExpense(name: name, price: Double(price) as! Double, date: currentDate, category: category)
+            let convertedPrice = Double(price)!
+            ExpensesHelper().addExpense(name: name, price: convertedPrice, date: currentDate, category: category)
             print("\(name), \(price),\(category)")
             navigationController?.popViewController(animated: true)
         }
@@ -193,4 +189,36 @@ class AddExpenseTableViewController: UITableViewController {
         }
     }
 
+}
+// MARK: Setup Navigation Bar
+extension AddExpenseTableViewController {
+    
+    func setupNavBar(_ navbar:UINavigationBar){
+        navbar.tintColor = UIColor.white
+        navbar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addExpenseAction(sender:)))
+        navigationController?.navigationBar.prefersLargeTitles = false
+        title = "Add Expense"
+    }
+    
+}
+
+// MARK: Setup Table View
+extension AddExpenseTableViewController {
+    
+    func setupTableView() {
+        tableView = UITableView.init(frame: CGRect.init(), style: .grouped)
+        tableView.allowsSelection = false
+    }
+    
+}
+
+// MARK: Setup Tab Bar
+extension AddExpenseTableViewController {
+    
+    func setupTabbar(_ tabBar: UITabBar) {
+        tabBar.isHidden = true
+        tabBar.isTranslucent = true
+    }
+    
 }

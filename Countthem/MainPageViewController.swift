@@ -10,13 +10,14 @@ import UIKit
 
 class MainPageViewController: UIViewController {
     
+    //App Desing Helper helps to get Cool colours
+    let appDesignHelper = AppDesingHelper()
+    
     var categories = [Category]()
     var expenses = [Expense]()
     
     var tableView = UITableView()
     var index = Int()
-    
-    //label for navigation controller
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class MainPageViewController: UIViewController {
         expenses = ExpensesHelper().getExpenses()
         print("\(expenses.count)")
         setupNavigationBar()
-        tabBarController?.tabBar.tintColor = UIColor.purple
+        tabBarController?.tabBar.tintColor = UIColor.init(hexString: appDesignHelper.mainColor)
         
         setupViews()
     }
@@ -40,6 +41,8 @@ class MainPageViewController: UIViewController {
         guard let navBar = navigationController?.navigationBar else {return}
         navBar.prefersLargeTitles = true
         navBar.isTranslucent = false
+        navBar.barTintColor = UIColor.init(hexString: appDesignHelper.mainColor)
+        navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     func setupViews() {
@@ -74,7 +77,7 @@ class MainPageViewController: UIViewController {
             let table = UITableView()
             table.dataSource = self
             table.delegate = self
-            table.backgroundColor = UIColor.lightGray
+            table.backgroundColor = UIColor.init(hexString: appDesignHelper.backgroundColor)
             table.register(ExpenseTableViewCell.self, forCellReuseIdentifier: "TableViewCell")
             table.translatesAutoresizingMaskIntoConstraints = false
             table.separatorStyle = .none
@@ -102,7 +105,7 @@ class MainPageViewController: UIViewController {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = "Your list is empty. Add a new expense"
-            label.textColor = UIColor.lightGray
+            label.textColor = UIColor.init(hexString: appDesignHelper.mainColor)
             label.textAlignment = .center
             label.font = label.font.withSize(14)
             return label
@@ -153,18 +156,19 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
         cell.imageView.image = UIImage(named: categoryImage)
         cell.nameCategoryLabel.text = categoryName
         cell.backgroundColor = UIColor.white
-        cell.layer.shadowColor = UIColor.purple.cgColor
-        cell.layer.shadowOpacity = 0.2
+        cell.layer.shadowColor = UIColor.init(hexString: appDesignHelper.backgroundColor).cgColor
+        cell.layer.shadowOpacity = 1
         cell.layer.shadowOffset = .init(width: 1, height: 3)
         cell.layer.shadowRadius = 1
         cell.layer.cornerRadius = 8
         cell.layer.borderWidth = 0.1
-        cell.layer.borderColor = UIColor.purple.cgColor
+        cell.layer.borderColor = UIColor.gray.cgColor
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let category = categories[indexPath.row]
         let addExpenseViewController = AddExpenseTableViewController()
         addExpenseViewController.category = category
@@ -192,7 +196,7 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
         expense.categoryImage.image = UIImage(named: category.icon!)
         expense.nameCategory.text = category.name!
         expense.nameExpense.text = expenses[indexPath.row].name
-        expense.expensePrice.text = "\(expenses[indexPath.row].price)"
+        expense.expensePrice.text = "$\(expenses[indexPath.row].price)"
         
         
         return expense
@@ -206,3 +210,5 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+

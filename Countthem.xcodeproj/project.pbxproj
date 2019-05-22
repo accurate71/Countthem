@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		EA06A0EB228BDD7D0010E6AB /* CategoriesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06A0EA228BDD7D0010E6AB /* CategoriesHelper.swift */; };
+		EA0DA31022953F5E0095499F /* DebtBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DA30F22953F5E0095499F /* DebtBookController.swift */; };
+		EA0DA312229545040095499F /* Debt+DebtorsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */; };
+		EA10E6F12294201D00EE5FA0 /* AppDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */; };
 		EA180D932292818500603B8F /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA180D922292818500603B8F /* IconCollectionViewCell.swift */; };
 		EA1D7B232287ECD3005B0BF1 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D7B222287ECD3005B0BF1 /* ExpenseTableViewCell.swift */; };
 		EA1D7B262288F993005B0BF1 /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D7B252288F993005B0BF1 /* SettingsPageViewController.swift */; };
@@ -27,6 +30,9 @@
 
 /* Begin PBXFileReference section */
 		EA06A0EA228BDD7D0010E6AB /* CategoriesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesHelper.swift; sourceTree = "<group>"; };
+		EA0DA30F22953F5E0095499F /* DebtBookController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtBookController.swift; sourceTree = "<group>"; };
+		EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debt+DebtorsCollectionViewCell.swift"; sourceTree = "<group>"; };
+		EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDesignHelper.swift; sourceTree = "<group>"; };
 		EA180D922292818500603B8F /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA1D7B222287ECD3005B0BF1 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		EA1D7B252288F993005B0BF1 /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +63,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		98A1B6D80B729478999D160E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5BFC2E704C98A051BA06D0E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EA1D7B242288F965005B0BF1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +85,7 @@
 				EA8170C322898E7200464744 /* CategoriesViewController.swift */,
 				EA8170C52289918700464744 /* AddCategoryPageViewController.swift */,
 				EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */,
+				EA0DA30F22953F5E0095499F /* DebtBookController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -74,6 +95,8 @@
 			children = (
 				EA57498122842EA90058D576 /* Countthem */,
 				EA57498022842EA90058D576 /* Products */,
+				A5BFC2E704C98A051BA06D0E /* Pods */,
+				98A1B6D80B729478999D160E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,8 +128,9 @@
 			children = (
 				EA06A0EA228BDD7D0010E6AB /* CategoriesHelper.swift */,
 				EAC85B442290540E007B0768 /* ExpensesHelper.swift */,
-				EA57498922842EA90058D576 /* Countthem.xcdatamodeld */,
 				EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */,
+				EA57498922842EA90058D576 /* Countthem.xcdatamodeld */,
+				EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -117,6 +141,7 @@
 				EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */,
 				EA1D7B222287ECD3005B0BF1 /* ExpenseTableViewCell.swift */,
 				EA180D922292818500603B8F /* IconCollectionViewCell.swift */,
+				EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,6 +219,8 @@
 			files = (
 				EA1D7B262288F993005B0BF1 /* SettingsPageViewController.swift in Sources */,
 				EA06A0EB228BDD7D0010E6AB /* CategoriesHelper.swift in Sources */,
+				EA0DA31022953F5E0095499F /* DebtBookController.swift in Sources */,
+				EA0DA312229545040095499F /* Debt+DebtorsCollectionViewCell.swift in Sources */,
 				EA901EFD2293DD900082C9EB /* AppAnimationHelper.swift in Sources */,
 				EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */,
 				EA1D7B232287ECD3005B0BF1 /* ExpenseTableViewCell.swift in Sources */,
@@ -205,6 +232,7 @@
 				EAC85B452290540E007B0768 /* ExpensesHelper.swift in Sources */,
 				EA57498B22842EA90058D576 /* Countthem.xcdatamodeld in Sources */,
 				EA180D932292818500603B8F /* IconCollectionViewCell.swift in Sources */,
+				EA10E6F12294201D00EE5FA0 /* AppDesignHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

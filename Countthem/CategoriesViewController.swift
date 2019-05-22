@@ -70,7 +70,7 @@ class CategoriesViewController: UIViewController {
         title = "Categories"
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCategory(sender:))), animated: true)
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.tintColor = UIColor.purple
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     // MARK: Setup View Method
@@ -130,15 +130,15 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.imageView.image = UIImage(named: categories[indexPath.row].icon ?? "dinner")
             cell.nameCategoryLabel.text = categories[indexPath.row].name ?? "No cat"
             cell.nameCategoryLabel.textColor = UIColor.white
-            cell.backgroundColor = UIColor.purple
+            cell.backgroundColor = UIColor.init(hexString: AppDesingHelper().mainColor)
             cell.layer.cornerRadius = 8
-            cell.layer.shadowColor = UIColor.purple.cgColor
-            cell.layer.shadowOpacity = 0.2
-            cell.layer.shadowOffset = .init(width: 1, height: 3)
-            cell.layer.shadowRadius = 1
-            cell.layer.cornerRadius = 8
-            cell.layer.borderWidth = 0.1
-            cell.layer.borderColor = UIColor.purple.cgColor
+//            cell.layer.shadowColor = UIColor.purple.cgColor
+//            cell.layer.shadowOpacity = 0.2
+//            cell.layer.shadowOffset = .init(width: 1, height: 3)
+//            cell.layer.shadowRadius = 1
+//            cell.layer.cornerRadius = 8
+//            cell.layer.borderWidth = 0.1
+//            cell.layer.borderColor = UIColor.purple.cgColor
             return cell
         }
         return UICollectionViewCell()

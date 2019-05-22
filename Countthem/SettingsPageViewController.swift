@@ -14,8 +14,6 @@ class SettingsPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tabBarController?.tabBar.isTranslucent = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,8 +27,16 @@ class SettingsPageViewController: UIViewController {
     
     func setupNavigationBar() {
         self.title = "Settings"
+        navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationItem.title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.barTintColor = UIColor(hexString: AppDesingHelper().mainColor)
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
+    func setupTabbar() {
+        
     }
     
     // MARK: Setup Views Method
@@ -42,6 +48,7 @@ class SettingsPageViewController: UIViewController {
             table.dataSource = self
             table.translatesAutoresizingMaskIntoConstraints = false
             table.isScrollEnabled = false
+            table.backgroundColor = UIColor.init(hexString: AppDesingHelper().backgroundColor)
             return table
         }()
         
