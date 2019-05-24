@@ -31,7 +31,7 @@ class MainPageViewController: UIViewController {
         expenses = ExpensesHelper().getExpenses()
         print("\(expenses.count)")
         setupNavigationBar()
-        tabBarController?.tabBar.tintColor = UIColor.init(hexString: appDesignHelper.mainColor)
+        tabBarController?.tabBar.tintColor = appDesignHelper.mainColor
         
         setupViews()
     }
@@ -41,7 +41,7 @@ class MainPageViewController: UIViewController {
         guard let navBar = navigationController?.navigationBar else {return}
         navBar.prefersLargeTitles = true
         navBar.isTranslucent = false
-        navBar.barTintColor = UIColor.init(hexString: appDesignHelper.mainColor)
+        navBar.barTintColor = appDesignHelper.mainColor
         navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
@@ -105,7 +105,7 @@ class MainPageViewController: UIViewController {
             let label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = "Your list is empty. Add a new expense"
-            label.textColor = UIColor.init(hexString: appDesignHelper.mainColor)
+            label.textColor = appDesignHelper.mainColor
             label.textAlignment = .center
             label.font = label.font.withSize(14)
             return label

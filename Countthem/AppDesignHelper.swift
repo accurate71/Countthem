@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 class AppDesingHelper {
-    let mainColor = "#AF9BC0"
+    let mainColor = UIColor.init(hexString: "#AF9BC0")
     let backgroundColor = "#EEEEEE"
     let dateColor = "#71A0A5"
+    let anotherColor = UIColor.init(hexString: "#71A0A5")
 }

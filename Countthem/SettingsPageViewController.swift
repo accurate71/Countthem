@@ -30,7 +30,7 @@ class SettingsPageViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationItem.title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.barTintColor = UIColor(hexString: AppDesingHelper().mainColor)
+        navigationController?.navigationBar.barTintColor = AppDesingHelper().mainColor
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }

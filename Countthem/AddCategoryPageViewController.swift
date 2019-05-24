@@ -225,7 +225,7 @@ extension AddCategoryPageViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         if let cell = cell {
-            cell.backgroundColor = UIColor.init(hexString: AppDesingHelper().mainColor)
+            cell.backgroundColor = AppDesingHelper().mainColor
             icon = categoriesIcons[indexPath.row]
         }
     }

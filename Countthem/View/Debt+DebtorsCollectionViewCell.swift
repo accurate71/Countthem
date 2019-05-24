@@ -9,6 +9,7 @@
 import UIKit
 
 class Debt_DebtorsCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

@@ -130,7 +130,7 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.imageView.image = UIImage(named: categories[indexPath.row].icon ?? "dinner")
             cell.nameCategoryLabel.text = categories[indexPath.row].name ?? "No cat"
             cell.nameCategoryLabel.textColor = UIColor.white
-            cell.backgroundColor = UIColor.init(hexString: AppDesingHelper().mainColor)
+            cell.backgroundColor = AppDesingHelper().mainColor
             cell.layer.cornerRadius = 8
 //            cell.layer.shadowColor = UIColor.purple.cgColor
 //            cell.layer.shadowOpacity = 0.2
