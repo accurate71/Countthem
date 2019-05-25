@@ -26,6 +26,8 @@
 		EA901EFD2293DD900082C9EB /* AppAnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */; };
 		EAC85B452290540E007B0768 /* ExpensesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC85B442290540E007B0768 /* ExpensesHelper.swift */; };
 		EAC85B472290563F007B0768 /* AddExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */; };
+		EAC8D59522993CE3002005E7 /* AddItemDebtBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC8D59422993CE3002005E7 /* AddItemDebtBookController.swift */; };
+		EAC8D5972299425A002005E7 /* DebtBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC8D5962299425A002005E7 /* DebtBookHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAnimationHelper.swift; sourceTree = "<group>"; };
 		EAC85B442290540E007B0768 /* ExpensesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesHelper.swift; sourceTree = "<group>"; };
 		EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseTableViewController.swift; sourceTree = "<group>"; };
+		EAC8D59422993CE3002005E7 /* AddItemDebtBookController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemDebtBookController.swift; sourceTree = "<group>"; };
+		EAC8D5962299425A002005E7 /* DebtBookHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtBookHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 				EA8170C52289918700464744 /* AddCategoryPageViewController.swift */,
 				EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */,
 				EA0DA30F22953F5E0095499F /* DebtBookController.swift */,
+				EAC8D59422993CE3002005E7 /* AddItemDebtBookController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 				EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */,
 				EA57498922842EA90058D576 /* Countthem.xcdatamodeld */,
 				EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */,
+				EAC8D5962299425A002005E7 /* DebtBookHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -218,9 +224,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA1D7B262288F993005B0BF1 /* SettingsPageViewController.swift in Sources */,
+				EAC8D5972299425A002005E7 /* DebtBookHelper.swift in Sources */,
 				EA06A0EB228BDD7D0010E6AB /* CategoriesHelper.swift in Sources */,
 				EA0DA31022953F5E0095499F /* DebtBookController.swift in Sources */,
 				EA0DA312229545040095499F /* Debt+DebtorsCollectionViewCell.swift in Sources */,
+				EAC8D59522993CE3002005E7 /* AddItemDebtBookController.swift in Sources */,
 				EA901EFD2293DD900082C9EB /* AppAnimationHelper.swift in Sources */,
 				EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */,
 				EA1D7B232287ECD3005B0BF1 /* ExpenseTableViewCell.swift in Sources */,

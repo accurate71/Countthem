@@ -8,13 +8,7 @@
 
 import UIKit
 
-struct Debt {
-    let name: String?
-    let money: String?
-    let date: String?
-}
-
-struct Debtor {
+struct Debt1 {
     let name: String?
     let money: String?
     let date: String?
@@ -30,24 +24,31 @@ class DebtBookController: UITableViewController {
     @IBOutlet weak var debtorTitleLabel: UILabel!
     // Design Helper
     let appDesignHelper = AppDesingHelper()
+    //Debt Book Helper
+    let debtBookHelper = DebtBookHelper()
     
     
-    var debtsNames: [Debt] = [Debt(name: "David", money: "$34", date: "22/05/19"),
-                              Debt(name: "Alex", money: "$24", date: "22.05.19"),
-                              Debt(name: "Moon", money: "$34", date: "22/05/19"),
-                              Debt(name: "David", money: "$34", date: "22.05.19")]
+    var debtsNames = [Debt]()
     
-    var debtorsNames: [Debtor] = [Debtor(name: "Arman", money: "-$34", date: "22/05/19"),
-                              Debtor(name: "Alex", money: "-$24", date: "22.05.19"),
-                              Debtor(name: "Rick", money: "-$34", date: "22/05/19"),
-                              Debtor(name: "David", money: "-$34", date: "22.05.19")]
+    var debtorsNames = [Debtor]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let navbar = navigationController?.navigationBar {
-            setupNavBar(navbar)
-        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        debtsNames = debtBookHelper.getDebts()
+        debtCollectionView.reloadData()
+        
+        debtorsNames = debtBookHelper.getDebtors()
+        debtorCollectionView.reloadData()
+        
+        guard let navBar = navigationController?.navigationBar else { return }
+        guard let tabBar = tabBarController?.tabBar else { return }
+        setupTabbar(tabBar)
+        setupNavBar(navBar)
         setupTableView()
         setupCollectionViews()
         setupTitles()
@@ -128,16 +129,18 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
         
     }
     func setCell(cell: Debt_DebtorsCollectionViewCell, array: Any, indexPath: IndexPath) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
         if array is [Debt] {
             let array: [Debt] = array as! [Debt]
             cell.nameLabel.text = array[indexPath.row].name!
-            cell.priceLabel.text = array[indexPath.row].money!
-            cell.dateLabel.text = array[indexPath.row].date!
+            cell.priceLabel.text = "$\(array[indexPath.row].money)"
+            cell.dateLabel.text = dateFormatter.string(from: array[indexPath.row].date! as Date)
         } else if array is [Debtor] {
             let array: [Debtor] = array as! [Debtor]
             cell.nameLabel.text = array[indexPath.row].name!
-            cell.priceLabel.text = array[indexPath.row].money!
-            cell.dateLabel.text = array[indexPath.row].date!
+            cell.priceLabel.text = "-$\(array[indexPath.row].money)"
+            cell.dateLabel.text = dateFormatter.string(from: array[indexPath.row].date! as Date)
         }
         
         cell.dateLabel.textColor = UIColor.gray
@@ -161,6 +164,37 @@ extension DebtBookController {
         navbar.prefersLargeTitles = false
         navbar.isTranslucent = false
         title = "Debt Book"
+    }
+    
+}
+
+// MARK: Setting segues
+extension DebtBookController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! AddItemDebtBookController
+        if segue.identifier == "AddDebt" {
+            print("segue is add debt")
+            vc.title = "Add Debt"
+            vc.addWhat = "Debt"
+        } else if segue.identifier == "AddDebtor" {
+            print("segue is add debtor")
+            vc.title = "Add Debtor"
+            vc.addWhat = "Debtor"
+        }
+    }
+    
+    @IBAction func addButton(sender: UIButton) {
+        
+    }
+}
+
+// MARK: Setup Tab Bar
+extension DebtBookController {
+    
+    func setupTabbar(_ tabBar: UITabBar) {
+        tabBar.isHidden = false
+        tabBar.isTranslucent = false
     }
     
 }
