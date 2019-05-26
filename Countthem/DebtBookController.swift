@@ -6,13 +6,10 @@
 //  Copyright © 2019 Kirill Pushkarskiy. All rights reserved.
 //
 
+// TODO: - Change a color of Add buttons
+// TODO: - Make a deleting cell function
 import UIKit
 
-struct Debt1 {
-    let name: String?
-    let money: String?
-    let date: String?
-}
 
 class DebtBookController: UITableViewController {
     
@@ -26,7 +23,12 @@ class DebtBookController: UITableViewController {
     let appDesignHelper = AppDesingHelper()
     //Debt Book Helper
     let debtBookHelper = DebtBookHelper()
+    // App animation helper
+    let appAnimation = AppAnimationHelper()
     
+    var sharedIndexPath: IndexPath?
+    var toDelete = String()
+    var targetCell: UICollectionViewCell?
     
     var debtsNames = [Debt]()
     
@@ -85,7 +87,7 @@ extension DebtBookController {
     }
 }
 
-// MARK: Collection View data source
+// MARK: - Collection View data source
 extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -116,6 +118,71 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let longPressGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(testMethod(sender:)))
+        longPressGesture.minimumPressDuration = 0.3
+        longPressGesture.numberOfTapsRequired = 3
+        if collectionView == debtCollectionView {
+            let cell = collectionView.cellForItem(at: indexPath)
+            if let cell = cell {
+                toDelete = "Debt"
+                sharedIndexPath = indexPath
+                becomeFirstResponder()
+                cell.addGestureRecognizer(longPressGesture)
+                targetCell = cell
+                
+            }
+        } else if collectionView == debtorCollectionView {
+            let cell = collectionView.cellForItem(at: indexPath)
+            if let cell = cell {
+                toDelete = "Debtor"
+                sharedIndexPath = indexPath
+                becomeFirstResponder()
+                cell.addGestureRecognizer(longPressGesture)
+                targetCell = cell
+            }
+        }
+    }
+    
+    @objc func testMethod(sender: Any) {
+        if let cell = targetCell {
+            showMenu(cell: cell)
+        }
+    }
+    
+    func showMenu(cell: UICollectionViewCell) {
+        let menuItem = UIMenuItem(title: "Delete", action: #selector(deleteAction(sender:)))
+        let menu = UIMenuController.shared
+        menu.arrowDirection = .default
+        menu.menuItems = [menuItem]
+        menu.setTargetRect(CGRect.zero, in: cell.contentView)
+        menu.setMenuVisible(true, animated: true)
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    @objc func deleteAction(sender: Any) {
+        if let indexPath = sharedIndexPath {
+            if toDelete == "Debt" {
+                debtBookHelper.removeDebts(debt: debtsNames[indexPath.row])
+                debtsNames.remove(at: indexPath.row)
+                debtCollectionView.reloadData()
+                appAnimation.animationDeleting(for: debtCollectionView)
+            } else if toDelete == "Debtor" {
+                debtBookHelper.removeDebtor(debtor: debtorsNames[indexPath.row])
+                debtorsNames.remove(at: indexPath.row)
+                debtorCollectionView.reloadData()
+                appAnimation.animationDeleting(for: debtorCollectionView)
+            }
+        }
     }
     
     func decorateCell(_ cell: UICollectionViewCell) {
@@ -150,11 +217,9 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
     func setupCollectionView(_ view: UICollectionView) {
         view.backgroundColor = UIColor.init(hexString: appDesignHelper.backgroundColor)
     }
-    
-    
 }
 
-// MARK: Setup Navigation Bar
+// MARK: - Setup Navigation Bar
 extension DebtBookController {
     
     func setupNavBar(_ navbar:UINavigationBar){
@@ -168,7 +233,7 @@ extension DebtBookController {
     
 }
 
-// MARK: Setting segues
+// MARK: - Setting segues
 extension DebtBookController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -183,13 +248,9 @@ extension DebtBookController {
             vc.addWhat = "Debtor"
         }
     }
-    
-    @IBAction func addButton(sender: UIButton) {
-        
-    }
 }
 
-// MARK: Setup Tab Bar
+// MARK: - Setup Tab Bar
 extension DebtBookController {
     
     func setupTabbar(_ tabBar: UITabBar) {

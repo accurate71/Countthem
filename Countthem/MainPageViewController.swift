@@ -44,7 +44,7 @@ class MainPageViewController: UIViewController {
         navBar.barTintColor = appDesignHelper.mainColor
         navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
-    
+    // MARK: - Setting views
     func setupViews() {
         tabBarController?.tabBar.isHidden = false
         tabBarController?.tabBar.isTranslucent = false
@@ -81,6 +81,7 @@ class MainPageViewController: UIViewController {
             table.register(ExpenseTableViewCell.self, forCellReuseIdentifier: "TableViewCell")
             table.translatesAutoresizingMaskIntoConstraints = false
             table.separatorStyle = .none
+            table.allowsSelection = false
             return table
         }()
         self.tableView = tableView
@@ -117,7 +118,8 @@ class MainPageViewController: UIViewController {
         // MARK: Adding views and constraits
         self.view.addSubview(myCollectionView)
         self.view.addSubview(separatorView)
-        if expenses.isEmpty {
+        // FIXME: - The problem is if an user deletes the last item, the view didn't change background and the lable isn't visible
+        if expenses.count == 0 {
             print("The expenses array is empty")
             self.view.addSubview(messageView)
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
@@ -138,7 +140,7 @@ class MainPageViewController: UIViewController {
 
 }
 
-// MARK: Collection View Methods
+// MARK: - Collection View Methods
 extension MainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -178,7 +180,7 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
     
 }
 
-// MARK: TableView Methods
+// MARK: - TableView Methods
 extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -202,11 +204,21 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
         return expense
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ExpensesHelper().removeExpenses(expense: expenses[indexPath.row])
-        expenses.remove(at: indexPath.row)
-        tableView.reloadData()
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (rowAction, indexPath) in
+            ExpensesHelper().removeExpenses(expense: self.expenses[indexPath.row])
+            self.expenses.remove(at: indexPath.row)
+            tableView.reloadData()
+            AppAnimationHelper().animationDeleting(for: tableView)
+        }
+        deleteAction.backgroundColor = appDesignHelper.mainColor
+        
+        return [deleteAction]
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//    }
     
     
 }

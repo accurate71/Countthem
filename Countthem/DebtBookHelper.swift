@@ -62,11 +62,20 @@ class DebtBookHelper {
         }
     }
     
-    // MARK: Remove category Method
+    // MARK: - Remove a debt Method
     func removeDebts(debt: Debt) {
         do {
             debts = getDebts()
             getContext().delete(debt)
+            save()
+        }
+    }
+    
+    // MARK: - Remove a debtor method
+    func removeDebtor(debtor: Debtor) {
+        do {
+            debtors = getDebtors()
+            getContext().delete(debtor)
             save()
         }
     }

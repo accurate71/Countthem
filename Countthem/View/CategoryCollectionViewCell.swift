@@ -24,6 +24,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = label.font.withSize(14)
         label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.1
         label.textColor = UIColor.blue
         label.textAlignment = .center
         return label
@@ -46,7 +47,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         addSubview(nameCategoryLabel)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0(40)]-20-|", options: .init(), metrics: nil, views: ["v0": imageView]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: .init(), metrics: nil, views: ["v0": nameCategoryLabel]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0(44)]-[v1]-|", options: .init(), metrics: nil, views: ["v0": imageView, "v1": nameCategoryLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v0(44)]-6-[v1]-6-|", options: .init(), metrics: nil, views: ["v0": imageView, "v1": nameCategoryLabel]))
     }
     
 }
