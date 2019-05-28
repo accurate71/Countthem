@@ -107,11 +107,11 @@
             </objects>
             <point key="canvasLocation" x="-335.19999999999999" y="-1305.697151424288"/>
         </scene>
-        <!--Settinga-->
+        <!--Settings-->
         <scene sceneID="iqO-uH-faG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x83-pG-8BU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settinga" image="settings" selectedImage="settings" id="OgE-Ee-zUg"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings" id="OgE-Ee-zUg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H3L-b0-bHQ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

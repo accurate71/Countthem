@@ -162,10 +162,6 @@ class AddExpenseTableViewController: UITableViewController {
             return cell
         }()
         
-        // TODO: Подключить фичу к базе
-        // TODO: Протестировать фичу
-        // TODO: Задокументировать фичу
-        // TODO: Залить в ветку
         switch indexPath.section {
         case 0:
             return chosenCategoryCell // The showing category cell

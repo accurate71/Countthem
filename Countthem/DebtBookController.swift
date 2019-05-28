@@ -122,8 +122,6 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let longPressGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(testMethod(sender:)))
-        longPressGesture.minimumPressDuration = 0.3
-        longPressGesture.numberOfTapsRequired = 3
         if collectionView == debtCollectionView {
             let cell = collectionView.cellForItem(at: indexPath)
             if let cell = cell {

@@ -10,14 +10,20 @@ import UIKit
 
 class MainPageViewController: UIViewController {
     
-    //App Desing Helper helps to get Cool colours
+    // App Desing Helper helps to get Cool colours
     let appDesignHelper = AppDesingHelper()
+    let appAnimationHelper = AppAnimationHelper()
     
+    var categoriesHelper = CategoriesHelper()
+    var expensesHelper = ExpensesHelper()
+
     var categories = [Category]()
     var expenses = [Expense]()
     
     var tableView = UITableView()
     var index = Int()
+    
+    var listEmpty = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +32,9 @@ class MainPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        categories = CategoriesHelper().getCategories()
+        categories = categoriesHelper.getCategories()
         print("\(categories.count)")
-        expenses = ExpensesHelper().getExpenses()
+        expenses = expensesHelper.getExpenses()
         print("\(expenses.count)")
         setupNavigationBar()
         tabBarController?.tabBar.tintColor = appDesignHelper.mainColor
@@ -68,6 +74,7 @@ class MainPageViewController: UIViewController {
             collection.backgroundColor = UIColor.white
             collection.translatesAutoresizingMaskIntoConstraints = false
             collection.isScrollEnabled = true
+            collection.showsHorizontalScrollIndicator = false
             
             return collection
         }()
@@ -103,23 +110,44 @@ class MainPageViewController: UIViewController {
             return view
         }()
         let messageLabel: UILabel = {
-            let label = UILabel()
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "Your list is empty. Add a new expense"
+            label.text = "Empty"
             label.textColor = appDesignHelper.mainColor
             label.textAlignment = .center
-            label.font = label.font.withSize(14)
+            label.font = label.font.withSize(32)
             return label
         }()
-        messageView.addSubview(messageLabel)
-        messageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0":messageLabel]))
-        messageView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: .init(), metrics: nil, views: ["v0":messageLabel]))
+        let messageImage: UIImageView = {
+            let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.alpha = 0.5
+            view.image = UIImage(named: "empty_icon")
+            return view
+        }()
         
+        let stack: UIStackView = {
+            let stack = UIStackView()
+            stack.translatesAutoresizingMaskIntoConstraints = false
+            stack.addArrangedSubview(messageLabel)
+            stack.addArrangedSubview(messageImage)
+            stack.axis = .vertical
+            stack.distribution = .equalSpacing
+            stack.spacing = 16
+            return stack
+        }()
+        messageImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        messageImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        messageView.addSubview(stack)
+        stack.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        stack.centerXAnchor.constraint(equalTo: messageView.centerXAnchor, constant: 0).isActive = true
+        stack.centerYAnchor.constraint(equalTo: messageView.centerYAnchor, constant: 0).isActive = true
         // MARK: Adding views and constraits
         self.view.addSubview(myCollectionView)
         self.view.addSubview(separatorView)
         // FIXME: - The problem is if an user deletes the last item, the view didn't change background and the lable isn't visible
-        if expenses.count == 0 {
+        if expenses.isEmpty {
             print("The expenses array is empty")
             self.view.addSubview(messageView)
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
@@ -206,7 +234,7 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (rowAction, indexPath) in
-            ExpensesHelper().removeExpenses(expense: self.expenses[indexPath.row])
+            self.expensesHelper.removeExpenses(expense: self.expenses[indexPath.row])
             self.expenses.remove(at: indexPath.row)
             tableView.reloadData()
             AppAnimationHelper().animationDeleting(for: tableView)
@@ -219,8 +247,4 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //
 //    }
-    
-    
 }
-
-

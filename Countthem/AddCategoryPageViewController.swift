@@ -17,6 +17,7 @@ class AddCategoryPageViewController: UIViewController {
     
     var name: String?
     var icon: String?
+    var tableView: UITableView?
     
     // MARK: Category Icons Array
     var categoriesIcons = ["breakfast","bus","cinema",
@@ -43,6 +44,12 @@ class AddCategoryPageViewController: UIViewController {
     @objc func addButton(sender: UIBarButtonItem) {
         print("Item added")
         
+        if let tableView = tableView {
+            let nameTextField = tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.viewWithTag(11) as? UITextField
+            if let field = nameTextField {
+                name = field.text
+            }
+        }
         if name == nil {
             showAlert(error: AlertError.noName)
         } else if icon == nil {
@@ -73,7 +80,7 @@ class AddCategoryPageViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // MARK: Setting Superview
+    // MARK: - Setting Superview
     /*
      The method helps to setup the elements of Superview like as Navigation Bar,
      TabBar and some attributes of the view.
@@ -84,7 +91,7 @@ class AddCategoryPageViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addButton(sender:)))
     }
     
-    // MARK: Setting Views
+    // MARK: - Setting Views
     //All UIviews are implement here, all the constarits of the views are implement in the method as well
     func setupViews() {
         
@@ -100,13 +107,14 @@ class AddCategoryPageViewController: UIViewController {
         }()
         
         view.addSubview(tableView)
+        self.tableView = tableView
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0":tableView]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: .init(), metrics: nil, views: ["v0":tableView]))
     }
 
 }
 
-// MARK: TableView Delegate and DataSource methods
+// MARK: - TableView Delegate and DataSource methods
 extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -133,6 +141,7 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
             field.placeholder = "Category Name"
             field.translatesAutoresizingMaskIntoConstraints = false
             field.delegate = self
+            field.tag = 11
             field.clearButtonMode = .whileEditing
             return field
         }()
@@ -243,7 +252,7 @@ extension AddCategoryPageViewController: UICollectionViewDelegate, UICollectionV
 extension AddCategoryPageViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        name = textField.text!
+        //name = textField.text!
         return true
     }
 }
