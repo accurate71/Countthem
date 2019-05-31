@@ -26,31 +26,6 @@
             </objects>
             <point key="canvasLocation" x="604" y="786.65667166416802"/>
         </scene>
-        <!--Statistics-->
-        <scene sceneID="y6e-FX-rwh">
-            <objects>
-                <viewController id="KBE-HZ-kxH" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QzM-Xa-Kfp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qM1-9P-F50">
-                                <rect key="frame" x="152" y="323" width="71" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="xUq-NJ-6Nb"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Statistics" image="icon_statistics" selectedImage="icon_statistics" id="HkM-80-2lT"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ldG-cL-JSB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-335" y="82"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3ud-Fg-h9R">
             <objects>
@@ -64,7 +39,7 @@
                     <connections>
                         <segue destination="MpE-mI-ZSg" kind="relationship" relationship="viewControllers" id="lzN-5c-e9f"/>
                         <segue destination="a0I-B6-Igt" kind="relationship" relationship="viewControllers" id="0s9-Gw-Z8V"/>
-                        <segue destination="KBE-HZ-kxH" kind="relationship" relationship="viewControllers" id="aEz-jv-7vg"/>
+                        <segue destination="aWS-8r-LnG" kind="relationship" relationship="viewControllers" id="aEz-jv-7vg"/>
                         <segue destination="x83-pG-8BU" kind="relationship" relationship="viewControllers" id="uXG-5I-Bub"/>
                     </connections>
                 </tabBarController>
@@ -462,6 +437,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2tS-Kl-wfs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1484" y="-612.14392803598207"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="edO-bl-lA6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aWS-8r-LnG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Statistics" image="icon_statistics" selectedImage="icon_statistics" id="HkM-80-2lT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3KJ-Oj-OZ7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0pL-dJ-FNd" kind="relationship" relationship="rootViewController" id="XBR-6O-d6q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9j-iH-VJC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-124" y="55"/>
+        </scene>
+        <!--Statistics View Controller-->
+        <scene sceneID="cb5-Aq-7dF">
+            <objects>
+                <viewController id="0pL-dJ-FNd" customClass="StatisticsViewController" customModule="Countthem" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FmR-pg-NiB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EPC-5C-e8V"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ejo-v1-l5d"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jmZ-id-N12" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="672.79999999999995" y="53.523238380809602"/>
         </scene>
     </scenes>
     <resources>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40E9FEFF00C521CE94DB40B5 /* Pods_Countthem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196338DF1F2970EE61B64879 /* Pods_Countthem.framework */; };
 		EA06A0EB228BDD7D0010E6AB /* CategoriesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06A0EA228BDD7D0010E6AB /* CategoriesHelper.swift */; };
 		EA0DA31022953F5E0095499F /* DebtBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DA30F22953F5E0095499F /* DebtBookController.swift */; };
 		EA0DA312229545040095499F /* Debt+DebtorsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */; };
@@ -20,6 +21,7 @@
 		EA57498B22842EA90058D576 /* Countthem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA57498922842EA90058D576 /* Countthem.xcdatamodeld */; };
 		EA57498D22842EAA0058D576 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA57498C22842EAA0058D576 /* Assets.xcassets */; };
 		EA57499022842EAA0058D576 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA57498E22842EAA0058D576 /* LaunchScreen.storyboard */; };
+		EA6FBAC2229E442400C1C731 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */; };
 		EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */; };
 		EA8170C422898E7200464744 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C322898E7200464744 /* CategoriesViewController.swift */; };
 		EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C52289918700464744 /* AddCategoryPageViewController.swift */; };
@@ -31,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		196338DF1F2970EE61B64879 /* Pods_Countthem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Countthem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EFA89284AD1C8D27ECF8320 /* Pods-Countthem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countthem.release.xcconfig"; path = "Pods/Target Support Files/Pods-Countthem/Pods-Countthem.release.xcconfig"; sourceTree = "<group>"; };
+		84166AAFFEF06A83E8CC70EA /* Pods-Countthem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countthem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Countthem/Pods-Countthem.debug.xcconfig"; sourceTree = "<group>"; };
 		EA06A0EA228BDD7D0010E6AB /* CategoriesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesHelper.swift; sourceTree = "<group>"; };
 		EA0DA30F22953F5E0095499F /* DebtBookController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtBookController.swift; sourceTree = "<group>"; };
 		EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debt+DebtorsCollectionViewCell.swift"; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 		EA57498C22842EAA0058D576 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA57498F22842EAA0058D576 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA57499122842EAA0058D576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA8170C322898E7200464744 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EA8170C52289918700464744 /* AddCategoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryPageViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40E9FEFF00C521CE94DB40B5 /* Pods_Countthem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +77,7 @@
 		98A1B6D80B729478999D160E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				196338DF1F2970EE61B64879 /* Pods_Countthem.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,6 +85,8 @@
 		A5BFC2E704C98A051BA06D0E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				84166AAFFEF06A83E8CC70EA /* Pods-Countthem.debug.xcconfig */,
+				4EFA89284AD1C8D27ECF8320 /* Pods-Countthem.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -91,6 +101,7 @@
 				EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */,
 				EA0DA30F22953F5E0095499F /* DebtBookController.swift */,
 				EAC8D59422993CE3002005E7 /* AddItemDebtBookController.swift */,
+				EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -159,9 +170,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA57499422842EAA0058D576 /* Build configuration list for PBXNativeTarget "Countthem" */;
 			buildPhases = (
+				952C972ED3C8F815835EB381 /* [CP] Check Pods Manifest.lock */,
 				EA57497B22842EA90058D576 /* Sources */,
 				EA57497C22842EA90058D576 /* Frameworks */,
 				EA57497D22842EA90058D576 /* Resources */,
+				E0CEFC4C0A15857A18115240 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,6 +231,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		952C972ED3C8F815835EB381 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Countthem-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0CEFC4C0A15857A18115240 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Countthem/Pods-Countthem-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Countthem/Pods-Countthem-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EA57497B22842EA90058D576 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -228,6 +290,7 @@
 				EA06A0EB228BDD7D0010E6AB /* CategoriesHelper.swift in Sources */,
 				EA0DA31022953F5E0095499F /* DebtBookController.swift in Sources */,
 				EA0DA312229545040095499F /* Debt+DebtorsCollectionViewCell.swift in Sources */,
+				EA6FBAC2229E442400C1C731 /* StatisticsViewController.swift in Sources */,
 				EAC8D59522993CE3002005E7 /* AddItemDebtBookController.swift in Sources */,
 				EA901EFD2293DD900082C9EB /* AppAnimationHelper.swift in Sources */,
 				EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */,
@@ -384,6 +447,7 @@
 		};
 		EA57499522842EAA0058D576 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84166AAFFEF06A83E8CC70EA /* Pods-Countthem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -402,6 +466,7 @@
 		};
 		EA57499622842EAA0058D576 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EFA89284AD1C8D27ECF8320 /* Pods-Countthem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

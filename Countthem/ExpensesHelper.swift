@@ -19,7 +19,7 @@ class ExpensesHelper {
     
     var expenses = [Expense]()
     
-    // MARK: Add category method
+    // MARK: - Add category method
     func addExpense(name: String, price: Double, date: NSDate, category: Category) {
         let entity = NSEntityDescription.entity(forEntityName: "Expense", in: getContext())
         let expense = Expense(entity: entity!, insertInto: getContext())
@@ -31,7 +31,7 @@ class ExpensesHelper {
         expenses.append(expense)
     }
     
-    // MARK: Load Categories
+    // MARK: - Load Categories
     func loadExpenses() {
         let fetchRequest =
             NSFetchRequest<Expense>(entityName: "Expense")
@@ -44,7 +44,7 @@ class ExpensesHelper {
         }
     }
     
-    // MARK: Remove category Method
+    // MARK: - Remove category Method
     func removeExpenses(expense: Expense) {
         do {
             expenses = getExpenses()
@@ -53,7 +53,7 @@ class ExpensesHelper {
         }
     }
     
-    // MARK: Save categories
+    // MARK: - Save categories
     func saveExpenses() {
         do {
             try getContext().save()
@@ -71,5 +71,13 @@ class ExpensesHelper {
     func getExpenses() -> [Expense] {
         loadExpenses()
         return expenses
+    }
+    
+    func getTotal() -> Double {
+        var total = Double()
+        for expense in expenses {
+            total += expense.price
+        }
+        return total
     }
 }
