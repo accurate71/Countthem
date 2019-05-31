@@ -166,6 +166,9 @@ extension StatisticsViewController {
      */
     func setupForCalendar() {
         
+        // Remove The stats view
+        statsTableView.removeFromSuperview()
+        
         // Setup Calendar Cell
         calendarCell = UITableViewCell(frame: CGRect.zero)
         calendarCell?.addSubview(calendarView)
@@ -193,9 +196,6 @@ extension StatisticsViewController {
         mainInfoCell?.backgroundColor = UIColor(hexString: appDesingHelper.backgroundColor)
         calendarTableView.backgroundColor = UIColor(hexString: appDesingHelper.backgroundColor)
         calendarTableView.separatorStyle = .none
-        
-        // Remove The stats view
-        statsTableView.removeFromSuperview()
         
         // Adding subiew
         view.addSubview(calendarTableView)
@@ -268,8 +268,10 @@ extension StatisticsViewController {
         switch segmentedControll.selectedSegmentIndex {
         case 0:
             setupForCalendar()
+            calendarTableView.reloadData()
         case 1:
             setupForStats()
+            statsTableView.reloadData()
         default:
             fatalError()
         }
