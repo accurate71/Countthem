@@ -19,7 +19,10 @@ class ExpensesHelper {
     
     var expenses = [Expense]()
     
-    // MARK: Add category method
+    let fetchRequest =
+        NSFetchRequest<Expense>(entityName: "Expense")
+    
+    // MARK: - Add category method
     func addExpense(name: String, price: Double, date: NSDate, category: Category) {
         let entity = NSEntityDescription.entity(forEntityName: "Expense", in: getContext())
         let expense = Expense(entity: entity!, insertInto: getContext())
@@ -31,11 +34,8 @@ class ExpensesHelper {
         expenses.append(expense)
     }
     
-    // MARK: Load Categories
-    func loadExpenses() {
-        let fetchRequest =
-            NSFetchRequest<Expense>(entityName: "Expense")
-        
+    // MARK: - Load Categories
+    private func loadExpenses() {
         //3
         do {
             expenses = try getContext().fetch(fetchRequest)
@@ -44,7 +44,24 @@ class ExpensesHelper {
         }
     }
     
-    // MARK: Remove category Method
+    private func loadExpensesWithDate(date: Date) -> [Expense] {
+        loadExpenses()
+        var arrayToReturn = [Expense]()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        for element in expenses {
+            let checkingdate1 = dateFormatter.string(from: element.date!)
+            let checkingdate2 = dateFormatter.string(from: date)
+            if checkingdate1 == checkingdate2 {
+                arrayToReturn.append(element)
+            }
+        }
+        return arrayToReturn
+    }
+    
+    // MARK: - Remove category Method
     func removeExpenses(expense: Expense) {
         do {
             expenses = getExpenses()
@@ -53,7 +70,7 @@ class ExpensesHelper {
         }
     }
     
-    // MARK: Save categories
+    // MARK: - Save categories
     func saveExpenses() {
         do {
             try getContext().save()
@@ -62,7 +79,7 @@ class ExpensesHelper {
         }
     }
     
-    func getContext() -> NSManagedObjectContext {
+    private func getContext() -> NSManagedObjectContext {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType) }
         let managedContext = appDelegate.persistentContainer.viewContext
         return managedContext
@@ -71,5 +88,17 @@ class ExpensesHelper {
     func getExpenses() -> [Expense] {
         loadExpenses()
         return expenses
+    }
+    
+    func getTotal(arr: [Expense]) -> Double {
+        var total = Double()
+        for expense in arr {
+            total += expense.price
+        }
+        return total
+    }
+    
+    func getExpensesWithDate(date: Date) -> [Expense] {
+        return loadExpensesWithDate(date: date)
     }
 }

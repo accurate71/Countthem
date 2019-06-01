@@ -10,20 +10,22 @@ import UIKit
 
 class MainPageViewController: UIViewController {
     
-    // App Desing Helper helps to get Cool colours
+    // MARK: - Helpers
     let appDesignHelper = AppDesingHelper()
     let appAnimationHelper = AppAnimationHelper()
-    
     var categoriesHelper = CategoriesHelper()
     var expensesHelper = ExpensesHelper()
-
+    
+    // Variables
+    
     var categories = [Category]()
     var expenses = [Expense]()
-    
     var tableView = UITableView()
     var index = Int()
-    
     var listEmpty = false
+    var total: Double?
+    
+    var currentDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +36,9 @@ class MainPageViewController: UIViewController {
         
         categories = categoriesHelper.getCategories()
         print("\(categories.count)")
-        expenses = expensesHelper.getExpenses()
+        expenses = expensesHelper.getExpensesWithDate(date: currentDate)
         print("\(expenses.count)")
+        total = expensesHelper.getTotal(arr: expenses)
         setupNavigationBar()
         tabBarController?.tabBar.tintColor = appDesignHelper.mainColor
         
@@ -43,12 +46,16 @@ class MainPageViewController: UIViewController {
     }
     
     func setupNavigationBar() {
-        self.title = "Today: $34"
+        setTitle()
         guard let navBar = navigationController?.navigationBar else {return}
         navBar.prefersLargeTitles = true
         navBar.isTranslucent = false
         navBar.barTintColor = appDesignHelper.mainColor
         navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
+    func setTitle() {
+        self.title = "Today: $\(total ?? 0.0)"
     }
     // MARK: - Setting views
     func setupViews() {
@@ -237,14 +244,12 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
             self.expensesHelper.removeExpenses(expense: self.expenses[indexPath.row])
             self.expenses.remove(at: indexPath.row)
             tableView.reloadData()
+            self.total = self.expensesHelper.getTotal(arr: self.expenses)
+            self.setTitle()
             AppAnimationHelper().animationDeleting(for: tableView)
         }
         deleteAction.backgroundColor = appDesignHelper.mainColor
         
         return [deleteAction]
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//    }
 }
