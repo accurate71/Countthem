@@ -15,6 +15,8 @@ import CoreData
 
 class CategoriesHelper {
     
+    let expensesHelper = ExpensesHelper()
+    
     // Creating 2 arrays which hold the items of Expenses and Categories
     var categories = [Category]()
     var expenses = [Expense]()
@@ -46,7 +48,7 @@ class CategoriesHelper {
     func removeCategory(category: Category) {
         do {
             categories = getCategories()
-            expenses = ExpensesHelper().getExpenses()
+            expenses = expensesHelper.getExpenses()
             for i in expenses {
                 if i.category == category {
                     ExpensesHelper().removeExpenses(expense: i)
@@ -78,5 +80,17 @@ class CategoriesHelper {
     func getCategories() -> [Category] {
         loadCategories()
         return categories
+    }
+    
+    func getTotalAmountOfCategory(category: Category) -> Double {
+        var total: Double = 0.0
+        let expenses = expensesHelper.getExpenses()
+        for expense in expenses {
+            if category == expense.category {
+                total += expense.price
+            }
+        }
+        
+        return total
     }
 }

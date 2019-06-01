@@ -25,6 +25,8 @@ class MainPageViewController: UIViewController {
     var listEmpty = false
     var total: Double?
     
+    var currentDate = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -34,9 +36,9 @@ class MainPageViewController: UIViewController {
         
         categories = categoriesHelper.getCategories()
         print("\(categories.count)")
-        expenses = expensesHelper.getExpenses()
+        expenses = expensesHelper.getExpensesWithDate(date: currentDate)
         print("\(expenses.count)")
-        total = expensesHelper.getTotal()
+        total = expensesHelper.getTotal(arr: expenses)
         setupNavigationBar()
         tabBarController?.tabBar.tintColor = appDesignHelper.mainColor
         
@@ -242,7 +244,7 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
             self.expensesHelper.removeExpenses(expense: self.expenses[indexPath.row])
             self.expenses.remove(at: indexPath.row)
             tableView.reloadData()
-            self.total = self.expensesHelper.getTotal()
+            self.total = self.expensesHelper.getTotal(arr: self.expenses)
             self.setTitle()
             AppAnimationHelper().animationDeleting(for: tableView)
         }

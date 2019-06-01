@@ -19,6 +19,9 @@ class ExpensesHelper {
     
     var expenses = [Expense]()
     
+    let fetchRequest =
+        NSFetchRequest<Expense>(entityName: "Expense")
+    
     // MARK: - Add category method
     func addExpense(name: String, price: Double, date: NSDate, category: Category) {
         let entity = NSEntityDescription.entity(forEntityName: "Expense", in: getContext())
@@ -32,16 +35,30 @@ class ExpensesHelper {
     }
     
     // MARK: - Load Categories
-    func loadExpenses() {
-        let fetchRequest =
-            NSFetchRequest<Expense>(entityName: "Expense")
-        
+    private func loadExpenses() {
         //3
         do {
             expenses = try getContext().fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+    }
+    
+    private func loadExpensesWithDate(date: Date) -> [Expense] {
+        loadExpenses()
+        var arrayToReturn = [Expense]()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        for element in expenses {
+            let checkingdate1 = dateFormatter.string(from: element.date!)
+            let checkingdate2 = dateFormatter.string(from: date)
+            if checkingdate1 == checkingdate2 {
+                arrayToReturn.append(element)
+            }
+        }
+        return arrayToReturn
     }
     
     // MARK: - Remove category Method
@@ -62,7 +79,7 @@ class ExpensesHelper {
         }
     }
     
-    func getContext() -> NSManagedObjectContext {
+    private func getContext() -> NSManagedObjectContext {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType) }
         let managedContext = appDelegate.persistentContainer.viewContext
         return managedContext
@@ -73,11 +90,15 @@ class ExpensesHelper {
         return expenses
     }
     
-    func getTotal() -> Double {
+    func getTotal(arr: [Expense]) -> Double {
         var total = Double()
-        for expense in expenses {
+        for expense in arr {
             total += expense.price
         }
         return total
+    }
+    
+    func getExpensesWithDate(date: Date) -> [Expense] {
+        return loadExpensesWithDate(date: date)
     }
 }

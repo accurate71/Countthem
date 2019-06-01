@@ -23,6 +23,7 @@
 		EA57499022842EAA0058D576 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA57498E22842EAA0058D576 /* LaunchScreen.storyboard */; };
 		EA6FBAC2229E442400C1C731 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */; };
 		EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */; };
+		EA7BC28E22A139B300C5A0BF /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BC28D22A139B300C5A0BF /* StatsTableViewCell.swift */; };
 		EA8170C422898E7200464744 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C322898E7200464744 /* CategoriesViewController.swift */; };
 		EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C52289918700464744 /* AddCategoryPageViewController.swift */; };
 		EA901EFD2293DD900082C9EB /* AppAnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */; };
@@ -53,6 +54,7 @@
 		EA57499122842EAA0058D576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		EA7BC28D22A139B300C5A0BF /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		EA8170C322898E7200464744 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EA8170C52289918700464744 /* AddCategoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryPageViewController.swift; sourceTree = "<group>"; };
 		EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAnimationHelper.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				EA1D7B222287ECD3005B0BF1 /* ExpenseTableViewCell.swift */,
 				EA180D922292818500603B8F /* IconCollectionViewCell.swift */,
 				EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */,
+				EA7BC28D22A139B300C5A0BF /* StatsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA1D7B262288F993005B0BF1 /* SettingsPageViewController.swift in Sources */,
+				EA7BC28E22A139B300C5A0BF /* StatsTableViewCell.swift in Sources */,
 				EAC8D5972299425A002005E7 /* DebtBookHelper.swift in Sources */,
 				EA06A0EB228BDD7D0010E6AB /* CategoriesHelper.swift in Sources */,
 				EA0DA31022953F5E0095499F /* DebtBookController.swift in Sources */,

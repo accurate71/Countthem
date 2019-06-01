@@ -12,11 +12,11 @@ import FSCalendar
 class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
     
     fileprivate weak var calendar: FSCalendar!
-    let itemsForTest: [String] = ["Bilba", "Bilba", "Bilba", "Bilba", "Bilba", "Bilba"]
     
     // MARK: - Helpers
     let appDesingHelper = AppDesingHelper()
     let expensesHelper = ExpensesHelper()
+    let categoriesHelper = CategoriesHelper()
     
     // MARK: - Views
     let segmentedControll: UISegmentedControl = {
@@ -58,7 +58,7 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     }()
     let totalDayValue: UILabel = {
         let label = UILabel()
-        label.text = "$---"
+        label.text = "$0.0"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +82,7 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     }()
     let totalMonthValue: UILabel = {
         let label = UILabel()
-        label.text = "$----"
+        label.text = "$0.0"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -110,6 +110,8 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     
     // Variables
     var expenses: [Expense]?
+    var categories: [Category]?
+    var currentDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,17 +124,18 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
         calendarView.delegate = self
         calendarView.dataSource = self
         self.calendar = calendarView
-        calendarTableView.delegate = self
-        calendarTableView.dataSource = self
-        statsTableView.delegate = self
-        statsTableView.dataSource = self
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        expenses = expensesHelper.getExpenses()
+        expenses = expensesHelper.getExpensesWithDate(date: currentDate)
+        categories = categoriesHelper.getCategories()
         calendarTableView.reloadData()
+        statsTableView.reloadData()
+        calendarTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 
 }
@@ -165,6 +168,9 @@ extension StatisticsViewController {
      The method setups the views which are needed for the Calendar View
      */
     func setupForCalendar() {
+        
+        calendarTableView.delegate = self
+        calendarTableView.dataSource = self
         
         // Remove The stats view
         statsTableView.removeFromSuperview()
@@ -237,11 +243,37 @@ extension StatisticsViewController {
     }
     
     /*
-     In case when Segmented contoll is switching on calendar, the method is invoked.
-     The method setups the views which are needed for the Calendar View
+     In case when Segmented contoll is switching on stats, the method is invoked.
+     The method setups the views which are needed for the Stats View
      */
     func setupForStats() {
         calendarTableView.removeFromSuperview()
+        statsTableView.delegate = self
+        statsTableView.dataSource = self
+        statsTableView.separatorStyle = .none
+        
+        // Adding subiew
+        view.addSubview(statsTableView)
+        
+        //*** AutoLayout ***
+        NSLayoutConstraint.activate([
+            statsTableView.topAnchor.constraint(equalTo: segmentedControll.bottomAnchor, constant: 16),
+            statsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            statsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            statsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+    }
+    /*
+     Additinal method for the stats view
+     */
+    func setupStatsCell(categories: [Category], tableView: UITableView, reuseIdentifier: String, indexPath: IndexPath) -> StatsTableViewCell {
+        print("Setup stats cell")
+        tableView.register(StatsTableViewCell.self, forCellReuseIdentifier: "StatsListCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? StatsTableViewCell
+        cell?.categoryIcon.image = UIImage(named: categories[indexPath.row].icon!)
+        cell?.categoryName.text = categories[indexPath.row].name
+        cell?.totalMoneyLabel.text = "$\(categoriesHelper.getTotalAmountOfCategory(category: categories[indexPath.row]))"
+        return cell!
     }
     
 }
@@ -286,6 +318,8 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
         switch tableView {
         case calendarTableView:
             return 2
+        case statsTableView:
+            return 1
         default:
             return 0
         }
@@ -293,20 +327,22 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let count = expenses?.count else {
-            return 0
-        }
+        guard let count = expenses?.count else { return 0 }
+        guard let categoriesCount = categories?.count else { return 0 }
         
         switch tableView {
         case calendarTableView:
             //return count + 3
             switch section {
             case 0: return 2
-            case 1: return expenses!.count
+            case 1: return count
             default: return 0
             }
         case statsTableView:
-            return count
+            switch section {
+            case 0: return categoriesCount
+            default: return 0
+            }
         default:
             fatalError()
         }
@@ -336,7 +372,21 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             default: return UITableViewCell()
             }
+        } else if tableView == statsTableView {
+            switch indexPath.section {
+            case 0: return setupStatsCell(categories: categories!, tableView: tableView, reuseIdentifier: "StatsListCell", indexPath: indexPath)
+            default: fatalError()
+            }
         }
         return UITableViewCell()
     }
 }
+
+extension StatisticsViewController {
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        expenses = expensesHelper.getExpensesWithDate(date: date)
+        calendarTableView.reloadData()
+    }
+}
+
+
