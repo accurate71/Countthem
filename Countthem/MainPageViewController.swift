@@ -48,10 +48,9 @@ class MainPageViewController: UIViewController {
     func setupNavigationBar() {
         setTitle()
         guard let navBar = navigationController?.navigationBar else {return}
-        navBar.prefersLargeTitles = true
         navBar.isTranslucent = false
         navBar.barTintColor = appDesignHelper.mainColor
-        navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     func setTitle() {

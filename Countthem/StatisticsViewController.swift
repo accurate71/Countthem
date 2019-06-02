@@ -109,13 +109,18 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     }()
     
     // Variables
+    var allExpenses: [Expense]?
     var expenses: [Expense]?
     var categories: [Category]?
     var currentDate = Date()
+    var dateOfCalendar: Date?
+    var totalDay: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        expenses = expensesHelper.getExpensesWithDate(date: currentDate)
+        allExpenses = expensesHelper.getExpenses()
         setupNavBar()
         setupViews()
         segmentedControll.selectedSegmentIndex = 0
@@ -124,14 +129,22 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
         calendarView.delegate = self
         calendarView.dataSource = self
         self.calendar = calendarView
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         expenses = expensesHelper.getExpensesWithDate(date: currentDate)
+        allExpenses = expensesHelper.getExpenses()
+        
+        if let expenses = expenses, let allExpenses = allExpenses {
+            totalDayValue.text = "$\(setTotalDay(expenses: expenses, date: currentDate))"
+            totalMonthValue.text = "$\(setTotalMonth(expenses: allExpenses, date: currentDate))"
+        } else {
+            totalDayValue.text = "$0.0"
+            totalMonthValue.text = "0.0"
+        }
+        
         categories = categoriesHelper.getCategories()
         calendarTableView.reloadData()
         statsTableView.reloadData()
@@ -180,6 +193,7 @@ extension StatisticsViewController {
         calendarCell?.addSubview(calendarView)
         
         // Setup Main Info Cell
+        
         mainInfoCell = UITableViewCell(frame: CGRect.zero)
         dayStack.addArrangedSubview(totalDayTitle)
         dayStack.addArrangedSubview(totalDayValue)
@@ -385,8 +399,53 @@ extension StatisticsViewController: UITableViewDelegate, UITableViewDataSource {
 extension StatisticsViewController {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         expenses = expensesHelper.getExpensesWithDate(date: date)
+        allExpenses = expensesHelper.getExpenses()
+        totalDayValue.text = "$\(setTotalDay(expenses: expenses!, date: date))"
+        totalMonthValue.text = "$\(setTotalMonth(expenses: allExpenses!, date: date))"
         calendarTableView.reloadData()
     }
+}
+
+// MARK: - Seting value for Titles
+extension StatisticsViewController {
+    
+    func setTotalDay(expenses: [Expense], date: Date) -> Double {
+        print("Call the set total method")
+        var totalDay: Double = 0.0
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        
+        let date1 = dateFormatter.string(from: date)
+        
+        for expense in expenses {
+            let date2 = dateFormatter.string(from: expense.date!)
+            if date1 == date2 {
+                totalDay += expense.price
+            }
+        }
+        
+        return totalDay
+    }
+    
+    func setTotalMonth(expenses: [Expense], date: Date) -> Double {
+        var total: Double = 0.0
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: date)
+        
+        totalMonthTitle.text = "On \(nameOfMonth):"
+        
+        for expense in expenses {
+            let monthToCompare = dateFormatter.string(from: expense.date!)
+            if nameOfMonth == monthToCompare {
+                total += expense.price
+            }
+        }
+        return total
+    }
+    
 }
 
 

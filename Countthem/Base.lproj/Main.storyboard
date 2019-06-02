@@ -333,6 +333,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="g5W-kf-B0G"/>
                     <connections>
+                        <outlet property="addButton1" destination="k4W-UE-dCj" id="GEz-AF-duq"/>
+                        <outlet property="addButton2" destination="sAT-Bl-jwG" id="HaK-UG-HRJ"/>
                         <outlet property="debtCollectionView" destination="H4H-do-awM" id="IW9-2Z-Ymd"/>
                         <outlet property="debtTitleLabel" destination="olC-lS-X9j" id="uzv-mg-or1"/>
                         <outlet property="debtorCollectionView" destination="4Rt-x8-xzJ" id="T03-Yg-ae5"/>
@@ -341,7 +343,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsu-j3-ojw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672.79999999999995" y="-612.14392803598207"/>
+            <point key="canvasLocation" x="673" y="-589"/>
         </scene>
         <!--Title-->
         <scene sceneID="Sy8-0V-7tG">
