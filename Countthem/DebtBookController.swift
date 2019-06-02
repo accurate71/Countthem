@@ -19,11 +19,13 @@ class DebtBookController: UITableViewController {
     // Titles
     @IBOutlet weak var debtTitleLabel: UILabel!
     @IBOutlet weak var debtorTitleLabel: UILabel!
-    // Design Helper
+    // Buttons
+    @IBOutlet weak var addButton1: UIButton!
+    @IBOutlet weak var addButton2: UIButton!
+    
+    // MARK: - Helpers
     let appDesignHelper = AppDesingHelper()
-    //Debt Book Helper
     let debtBookHelper = DebtBookHelper()
-    // App animation helper
     let appAnimation = AppAnimationHelper()
     
     var sharedIndexPath: IndexPath?
@@ -36,6 +38,9 @@ class DebtBookController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addButton1.tintColor = appDesignHelper.mainColor
+        addButton2.tintColor = appDesignHelper.mainColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
