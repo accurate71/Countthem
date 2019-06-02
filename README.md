@@ -14,7 +14,7 @@ Welcome a simple app to manage your expenses.
 
 ###Main screen
 <br/><br/>
-![Main Screen](https://i.ibb.co/m56YPSn/mainpage-screenshot2-for-github.png | width = 375)
+![Main Screen](https://i.ibb.co/m56YPSn/mainpage-screenshot2-for-github.png){:height="50%" width="50%"}
 <br/><br/>
 Here is the Main Page view. An user can add or delete the expenses which the user add during a day. Also on the screen, the user can track the total amount of spent money.
 * To add an expense the user needs to tap on a category from the horizontal collection of categories.
@@ -23,7 +23,7 @@ Here is the Main Page view. An user can add or delete the expenses which the use
 
 ###Debt Book
 <br/><br/>
-![Debt Book](https://i.ibb.co/d7SWq8C/debtbook-screenshot-for-github.png | width = 375)
+![Debt Book](https://i.ibb.co/d7SWq8C/debtbook-screenshot-for-github.png){:height="50%" width="50%"}
 <br/><br/>
 Here is the Debt Book view. A user can add or delete the debts. Also, on the screen, the user can track how much money he/she borrow from someone.
 * To add a debt or a debtor. the user needs to tap on the buttons in the top-right corners of the collections.
@@ -32,16 +32,16 @@ Here is the Debt Book view. A user can add or delete the debts. Also, on the scr
 
 ###Statistics
 <br/><br/>
-![Statistics 1](https://i.ibb.co/C67FTxg/Statisticspage1-screenshot-for-github.png | width = 375)
-![Statistics 2](https://i.ibb.co/y6QCT0c/Statisticspage2-screenshot-for-github.png | width = 375)
+![Statistics 1](https://i.ibb.co/C67FTxg/Statisticspage1-screenshot-for-github.png){:height="50%" width="50%"}
+![Statistics 2](https://i.ibb.co/y6QCT0c/Statisticspage2-screenshot-for-github.png){:height="50%" width="50%"}
 <br/><br/>
 * Screenshot 1. Here is the Statistics page. The screen shows a user his statistics. The user can choose a day in the calendar to check how much money he/she has spent. The user can the total amount of the chosen day and the month.
 * Screenshot 2. The same screen, but the user can see how much money he/she spent in total for each category.
 
 ###Settings
 <br/><br/>
-![Settings 1](https://i.ibb.co/Bt0MKTm/settings-screenshot1-for-github.png | width = 375)
-![Settings 2](https://i.ibb.co/z2WF4Yy/settings-screenshot2-for-github.png | width = 375)
+![Settings 1](https://i.ibb.co/Bt0MKTm/settings-screenshot1-for-github.png){:height="50%" width="50%"}
+![Settings 2](https://i.ibb.co/z2WF4Yy/settings-screenshot2-for-github.png){:height="50%" width="50%"}
 <br/><br/>
 Here is the Settings page. By the settings, the user can manage his categories and choose the current currency.
 
