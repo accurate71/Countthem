@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="icon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,8 +23,8 @@
     </entity>
     <elements>
         <element name="Category" positionX="-356.5234375" positionY="-51.96875" width="128" height="88"/>
-        <element name="Expense" positionX="-59.234375" positionY="-209.08984375" width="128" height="103"/>
         <element name="Debt" positionX="-207" positionY="-99" width="128" height="90"/>
         <element name="Debtor" positionX="-198" positionY="-90" width="128" height="90"/>
+        <element name="Expense" positionX="-59.234375" positionY="-209.08984375" width="128" height="103"/>
     </elements>
 </model>

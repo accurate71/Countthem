@@ -24,6 +24,7 @@
 		EA6FBAC2229E442400C1C731 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */; };
 		EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */; };
 		EA7BC28E22A139B300C5A0BF /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BC28D22A139B300C5A0BF /* StatsTableViewCell.swift */; };
+		EA7D445A22A7515B002422D4 /* CurrencyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D445922A7515B002422D4 /* CurrencyHelper.swift */; };
 		EA8170C422898E7200464744 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C322898E7200464744 /* CategoriesViewController.swift */; };
 		EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C52289918700464744 /* AddCategoryPageViewController.swift */; };
 		EA901EFD2293DD900082C9EB /* AppAnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */; };
@@ -31,6 +32,8 @@
 		EAC85B472290563F007B0768 /* AddExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */; };
 		EAC8D59522993CE3002005E7 /* AddItemDebtBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC8D59422993CE3002005E7 /* AddItemDebtBookController.swift */; };
 		EAC8D5972299425A002005E7 /* DebtBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC8D5962299425A002005E7 /* DebtBookHelper.swift */; };
+		EACB725222A78AB900FD159B /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = EACB725122A78AB900FD159B /* defaults.plist */; };
+		EAD005C022A799E9005CE548 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD005BF22A799E9005CE548 /* CurrencyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,7 @@
 		EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA7BC28D22A139B300C5A0BF /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
+		EA7D445922A7515B002422D4 /* CurrencyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHelper.swift; sourceTree = "<group>"; };
 		EA8170C322898E7200464744 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EA8170C52289918700464744 /* AddCategoryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryPageViewController.swift; sourceTree = "<group>"; };
 		EA901EFC2293DD900082C9EB /* AppAnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAnimationHelper.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 		EAC85B462290563F007B0768 /* AddExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseTableViewController.swift; sourceTree = "<group>"; };
 		EAC8D59422993CE3002005E7 /* AddItemDebtBookController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemDebtBookController.swift; sourceTree = "<group>"; };
 		EAC8D5962299425A002005E7 /* DebtBookHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtBookHelper.swift; sourceTree = "<group>"; };
+		EACB725122A78AB900FD159B /* defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
+		EAD005BF22A799E9005CE548 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,7 @@
 				EA0DA30F22953F5E0095499F /* DebtBookController.swift */,
 				EAC8D59422993CE3002005E7 /* AddItemDebtBookController.swift */,
 				EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */,
+				EAD005BF22A799E9005CE548 /* CurrencyViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -137,6 +144,7 @@
 				EA57498C22842EAA0058D576 /* Assets.xcassets */,
 				EA57498E22842EAA0058D576 /* LaunchScreen.storyboard */,
 				EA57499122842EAA0058D576 /* Info.plist */,
+				EACB725122A78AB900FD159B /* defaults.plist */,
 			);
 			path = Countthem;
 			sourceTree = "<group>";
@@ -150,6 +158,7 @@
 				EA57498922842EA90058D576 /* Countthem.xcdatamodeld */,
 				EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */,
 				EAC8D5962299425A002005E7 /* DebtBookHelper.swift */,
+				EA7D445922A7515B002422D4 /* CurrencyHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -226,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EACB725222A78AB900FD159B /* defaults.plist in Resources */,
 				EA57499022842EAA0058D576 /* LaunchScreen.storyboard in Resources */,
 				EA57498D22842EAA0058D576 /* Assets.xcassets in Resources */,
 				EA57498822842EA90058D576 /* Main.storyboard in Resources */,
@@ -266,15 +276,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Countthem/Pods-Countthem-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyPlistManager/SwiftyPlistManager.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyPlistManager.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -297,6 +313,7 @@
 				EA6FBAC2229E442400C1C731 /* StatisticsViewController.swift in Sources */,
 				EAC8D59522993CE3002005E7 /* AddItemDebtBookController.swift in Sources */,
 				EA901EFD2293DD900082C9EB /* AppAnimationHelper.swift in Sources */,
+				EAD005C022A799E9005CE548 /* CurrencyViewController.swift in Sources */,
 				EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */,
 				EA1D7B232287ECD3005B0BF1 /* ExpenseTableViewCell.swift in Sources */,
 				EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */,
@@ -304,6 +321,7 @@
 				EAC85B472290563F007B0768 /* AddExpenseTableViewController.swift in Sources */,
 				EA57498322842EA90058D576 /* AppDelegate.swift in Sources */,
 				EA8170C422898E7200464744 /* CategoriesViewController.swift in Sources */,
+				EA7D445A22A7515B002422D4 /* CurrencyHelper.swift in Sources */,
 				EAC85B452290540E007B0768 /* ExpensesHelper.swift in Sources */,
 				EA57498B22842EA90058D576 /* Countthem.xcdatamodeld in Sources */,
 				EA180D932292818500603B8F /* IconCollectionViewCell.swift in Sources */,

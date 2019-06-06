@@ -10,7 +10,9 @@ import UIKit
 
 class SettingsPageViewController: UIViewController {
     
-    let items = ["Category", "Currency", "About"]
+    let currencyHelper = CurrencyHelper()
+    
+    var currentSign: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,8 @@ class SettingsPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        currentSign = currencyHelper.getCurrentSign()
+        setupTabbar()
         setupViews()
         setupNavigationBar()
         
@@ -33,10 +37,6 @@ class SettingsPageViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = AppDesingHelper().mainColor
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-    }
-    
-    func setupTabbar() {
-        
     }
     
     // MARK: Setup Views Method
@@ -92,12 +92,34 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
+        
         let currencyLabel: UILabel = {
             let label = UILabel()
             label.text = "Currency"
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
+        
+        let currentCurrency: UILabel = {
+            let label = UILabel()
+            if let currentSign = currentSign {
+                switch currentSign {
+                case "$": label.text = "Dollar"
+                case "₽": label.text = "Ruble"
+                case "€": label.text = "Euro"
+                default: fatalError()
+                }
+            }
+            label.textColor = .lightGray
+            label.textAlignment = .right
+            return label
+        }()
+        
+        let stackView = UIStackView(arrangedSubviews: [currencyLabel, currentCurrency])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         let aboutLabel: UILabel = {
             let label = UILabel()
             label.text = "About"
@@ -108,9 +130,20 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
         let categoryCell: UITableViewCell = {
             return createCell(label: categoryLabel, accessoryType: .disclosureIndicator)
         }()
-        let currencyCell: UITableViewCell = {
-            return createCell(label: currencyLabel, accessoryType: .none)
-        }()
+        categoryCell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCategoryView(sender:))))
+//        let currencyCell: UITableViewCell = {
+//            return createCell(label: currencyLabel, accessoryType: .none)
+//        }()
+        
+        let testCell = UITableViewCell()
+        testCell.accessoryType = .disclosureIndicator
+        testCell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCurrencyView(sender:))))
+        testCell.addSubview(stackView)
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: testCell.leadingAnchor, constant: 16),
+            stackView.centerYAnchor.constraint(equalTo: testCell.centerYAnchor),
+            stackView.trailingAnchor.constraint(equalTo: testCell.trailingAnchor, constant: -35)
+            ])
         let aboutCell: UITableViewCell = {
             return createCell(label: aboutLabel, accessoryType: .disclosureIndicator)
         }()
@@ -123,7 +156,7 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
             }
         case 1:
             switch indexPath.row {
-            case 0: return currencyCell
+            case 0: return testCell
             default: fatalError()
             }
         case 2:
@@ -146,9 +179,15 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            self.navigationController?.pushViewController(CategoriesViewController.init(), animated: true)
+    @objc func openCategoryView(sender: UITableViewCell) {
+        self.navigationController?.pushViewController(CategoriesViewController.init(), animated: true)
+    }
+    
+    @objc func openCurrencyView(sender: UITableViewCell) {
+        if let currentSign = currentSign {
+            let vc = CurrencyViewController()
+            vc.currentSign = currentSign
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -162,4 +201,12 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     
+}
+
+// MARK: - Setup Tabbar
+extension SettingsPageViewController {
+    func setupTabbar() {
+        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isTranslucent = true
+    }
 }

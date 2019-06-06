@@ -15,6 +15,7 @@ class MainPageViewController: UIViewController {
     let appAnimationHelper = AppAnimationHelper()
     var categoriesHelper = CategoriesHelper()
     var expensesHelper = ExpensesHelper()
+    let currencyHelper = CurrencyHelper()
     
     // Variables
     
@@ -24,15 +25,19 @@ class MainPageViewController: UIViewController {
     var index = Int()
     var listEmpty = false
     var total: Double?
+    var currentSign: String?
     
     var currentDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        currentSign = currencyHelper.getCurrentSign()
         
         categories = categoriesHelper.getCategories()
         print("\(categories.count)")
@@ -232,7 +237,7 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
         expense.categoryImage.image = UIImage(named: category.icon!)
         expense.nameCategory.text = category.name!
         expense.nameExpense.text = expenses[indexPath.row].name
-        expense.expensePrice.text = "$\(expenses[indexPath.row].price)"
+        expense.expensePrice.text = "\(currentSign!)\(expenses[indexPath.row].price)"
         
         
         return expense
