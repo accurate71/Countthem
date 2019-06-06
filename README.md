@@ -34,15 +34,20 @@ Here is the Debt Book view. A user can add or delete the debts. Also, on the scr
 ### Settings
 Here is the Settings page. By the settings, the user can manage his categories and choose the current currency.
 
+### Currency
+In the part of the app, A user can change the showed icon in the app and also to convert money by Currency converter.
+
 
 ## Built with:
 
 * [FSCalendar](https://github.com/WenchaoD/FSCalendar) - A superiorly awesome iOS7+ calendar control, compatible with Objective-C and Swift.
 * [Chameleon](https://github.com/ViccAlexander/Chameleon) - Chameleon is a lightweight, yet powerful, color framework for iOS (Objective-C & Swift)
+* [Alamofire](https://github.com/Alamofire/Alamofire) - an HTTP networking library written in Swift.
+* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - makes it easy to deal with JSON data in Swift.
 
 ## Authors
 
-* **Kirill Pushkarskiy** - *Initial work* - [Accurate71](https://github.com/accurate71)
+* **Kirill Pushkarskiy** - *Initial work* - [Accurate71](https://github.com/accurate71)[Klimber71](https://github.com/klimber71)
 
 ## Have an idea for the app? Text Me!
 
