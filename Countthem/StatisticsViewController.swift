@@ -17,6 +17,7 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     let appDesingHelper = AppDesingHelper()
     let expensesHelper = ExpensesHelper()
     let categoriesHelper = CategoriesHelper()
+    let currencyHelper = CurrencyHelper()
     
     // MARK: - Views
     let segmentedControll: UISegmentedControl = {
@@ -58,7 +59,7 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     }()
     let totalDayValue: UILabel = {
         let label = UILabel()
-        label.text = "$0.0"
+        label.text = "\(CurrencyHelper().getCurrentSign())0.0"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +83,7 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     }()
     let totalMonthValue: UILabel = {
         let label = UILabel()
-        label.text = "$0.0"
+        label.text = "\(CurrencyHelper().getCurrentSign())0.0"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -251,7 +252,7 @@ extension StatisticsViewController {
         cell?.categoryImage.image = UIImage(named: expenses[indexPath.row].category?.icon ?? "dinner")
         cell?.nameCategory.text = expenses[indexPath.row].category?.name
         cell?.nameExpense.text = expenses[indexPath.row].name
-        cell?.expensePrice.text = "$\(expenses[indexPath.row].price)"
+        cell?.expensePrice.text = "\(currencyHelper.getCurrentSign())\(expenses[indexPath.row].price)"
         cell?.backgroundColor = UIColor(hexString: appDesingHelper.backgroundColor)
         return cell!
     }
@@ -286,7 +287,7 @@ extension StatisticsViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? StatsTableViewCell
         cell?.categoryIcon.image = UIImage(named: categories[indexPath.row].icon!)
         cell?.categoryName.text = categories[indexPath.row].name
-        cell?.totalMoneyLabel.text = "$\(categoriesHelper.getTotalAmountOfCategory(category: categories[indexPath.row]))"
+        cell?.totalMoneyLabel.text = "\(currencyHelper.getCurrentSign())\(categoriesHelper.getTotalAmountOfCategory(category: categories[indexPath.row]))"
         return cell!
     }
     
@@ -400,8 +401,8 @@ extension StatisticsViewController {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         expenses = expensesHelper.getExpensesWithDate(date: date)
         allExpenses = expensesHelper.getExpenses()
-        totalDayValue.text = "$\(setTotalDay(expenses: expenses!, date: date))"
-        totalMonthValue.text = "$\(setTotalMonth(expenses: allExpenses!, date: date))"
+        totalDayValue.text = "\(currencyHelper.getCurrentSign())\(setTotalDay(expenses: expenses!, date: date))"
+        totalMonthValue.text = "\(currencyHelper.getCurrentSign())\(setTotalMonth(expenses: allExpenses!, date: date))"
         calendarTableView.reloadData()
     }
 }

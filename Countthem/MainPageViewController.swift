@@ -59,7 +59,7 @@ class MainPageViewController: UIViewController {
     }
     
     func setTitle() {
-        self.title = "Today: $\(total ?? 0.0)"
+        self.title = "Today: \(currentSign!)\(total ?? 0.0)"
     }
     // MARK: - Setting views
     func setupViews() {
@@ -210,10 +210,17 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let category = categories[indexPath.row]
-        let addExpenseViewController = AddExpenseTableViewController()
-        addExpenseViewController.category = category
-        navigationController?.pushViewController(addExpenseViewController, animated: true)
+        let cell = collectionView.cellForItem(at: indexPath)
+        UIView.animate(withDuration: 0.3, animations: {
+            cell?.backgroundColor = self.appDesignHelper.mainColor.withAlphaComponent(0.3)
+            cell?.center.y += 5
+        }) { _ in
+            let category = self.categories[indexPath.row]
+            let addExpenseViewController = AddExpenseTableViewController()
+            addExpenseViewController.category = category
+            self.navigationController?.pushViewController(addExpenseViewController, animated: true)
+        }
+        
     }
     
     

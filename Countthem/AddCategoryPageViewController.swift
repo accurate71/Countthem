@@ -23,7 +23,7 @@ class AddCategoryPageViewController: UIViewController {
     var categoriesIcons = ["breakfast","bus","cinema",
                            "coffee","dinner",
                            "games","groceries","internet",
-                           "lunch","mobile","shopping"]
+                           "lunch","mobile","shopping", "breakfast_new"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +103,7 @@ class AddCategoryPageViewController: UIViewController {
             table.delegate = self
             table.dataSource = self
             table.isScrollEnabled = false
+            table.allowsSelection = false
             return table
         }()
         
@@ -181,7 +182,7 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
             let cell = UITableViewCell()
             cell.addSubview(collectionView)
             cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": collectionView]))
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(250)]|", options: .init(), metrics: nil, views: ["v0": collectionView]))
+            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(300)]|", options: .init(), metrics: nil, views: ["v0": collectionView]))
             return cell
         }()
         
@@ -194,7 +195,6 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
         case 1:
             switch indexPath.row {
             case 0:
-                print("Hek")
                 return collectionViewCell
             default: fatalError()
             }

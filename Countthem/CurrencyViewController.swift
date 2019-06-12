@@ -122,8 +122,8 @@ class CurrencyViewController: UIViewController {
             amountTextField.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
             amountTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             valueLabel.topAnchor.constraint(equalTo: amountTextField.bottomAnchor, constant: 50),
-            valueLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            valueLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            valueLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            valueLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             convertButton.heightAnchor.constraint(equalToConstant: 50),
             convertButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             convertButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
@@ -223,16 +223,25 @@ extension CurrencyViewController {
         if let from = leftTF.text,
             let to = rightTF.text,
             let value = amountTextField.text {
-            currencyHelper.getValue(from: from, to: to, with: value)
-            self.view.addSubview(viewBack)
-            UIView.animate(withDuration: 0.3) {
-                viewBack.alpha = 0.5
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                UIView.animate(withDuration: 0.5) {
-                    viewBack.alpha = 0
+            if from != "" && to != "" && value != "" {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.convertButton.center.y += 5
+                }) { _ in
+                    self.currencyHelper.getValue(from: from, to: to, with: value)
+                    self.view.addSubview(viewBack)
+                    UIView.animate(withDuration: 0.3) {
+                        viewBack.alpha = 0.5
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                        UIView.animate(withDuration: 0.5) {
+                            viewBack.alpha = 0
+                        }
+                        self.valueLabel.text = self.currencyHelper.getAfterCountingValue()
+                    }
                 }
-                self.valueLabel.text = self.currencyHelper.getAfterCountingValue()
+                
+            } else {
+                self.valueLabel.text = "Please, Fill the fields"
             }
         }
     }

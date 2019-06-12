@@ -12,6 +12,7 @@
 		EA0DA31022953F5E0095499F /* DebtBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DA30F22953F5E0095499F /* DebtBookController.swift */; };
 		EA0DA312229545040095499F /* Debt+DebtorsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */; };
 		EA10E6F12294201D00EE5FA0 /* AppDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */; };
+		EA13755722AF577000E9AEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA13755622AF577000E9AEC2 /* Assets.xcassets */; };
 		EA180D932292818500603B8F /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA180D922292818500603B8F /* IconCollectionViewCell.swift */; };
 		EA1D7B232287ECD3005B0BF1 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D7B222287ECD3005B0BF1 /* ExpenseTableViewCell.swift */; };
 		EA1D7B262288F993005B0BF1 /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D7B252288F993005B0BF1 /* SettingsPageViewController.swift */; };
@@ -19,7 +20,6 @@
 		EA57498522842EA90058D576 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57498422842EA90058D576 /* MainPageViewController.swift */; };
 		EA57498822842EA90058D576 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA57498622842EA90058D576 /* Main.storyboard */; };
 		EA57498B22842EA90058D576 /* Countthem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA57498922842EA90058D576 /* Countthem.xcdatamodeld */; };
-		EA57498D22842EAA0058D576 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA57498C22842EAA0058D576 /* Assets.xcassets */; };
 		EA57499022842EAA0058D576 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA57498E22842EAA0058D576 /* LaunchScreen.storyboard */; };
 		EA6FBAC2229E442400C1C731 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */; };
 		EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */; };
@@ -44,6 +44,7 @@
 		EA0DA30F22953F5E0095499F /* DebtBookController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtBookController.swift; sourceTree = "<group>"; };
 		EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debt+DebtorsCollectionViewCell.swift"; sourceTree = "<group>"; };
 		EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDesignHelper.swift; sourceTree = "<group>"; };
+		EA13755622AF577000E9AEC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		EA180D922292818500603B8F /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA1D7B222287ECD3005B0BF1 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		EA1D7B252288F993005B0BF1 /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +53,6 @@
 		EA57498422842EA90058D576 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		EA57498722842EA90058D576 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA57498A22842EA90058D576 /* Countthem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Countthem.xcdatamodel; sourceTree = "<group>"; };
-		EA57498C22842EAA0058D576 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA57498F22842EAA0058D576 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA57499122842EAA0058D576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
@@ -141,8 +141,8 @@
 				EA6FEE1A228578C7006847E9 /* Model */,
 				EA57498222842EA90058D576 /* AppDelegate.swift */,
 				EA57498622842EA90058D576 /* Main.storyboard */,
-				EA57498C22842EAA0058D576 /* Assets.xcassets */,
 				EA57498E22842EAA0058D576 /* LaunchScreen.storyboard */,
+				EA13755622AF577000E9AEC2 /* Assets.xcassets */,
 				EA57499122842EAA0058D576 /* Info.plist */,
 				EACB725122A78AB900FD159B /* defaults.plist */,
 			);
@@ -237,7 +237,7 @@
 			files = (
 				EACB725222A78AB900FD159B /* defaults.plist in Resources */,
 				EA57499022842EAA0058D576 /* LaunchScreen.storyboard in Resources */,
-				EA57498D22842EAA0058D576 /* Assets.xcassets in Resources */,
+				EA13755722AF577000E9AEC2 /* Assets.xcassets in Resources */,
 				EA57498822842EA90058D576 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

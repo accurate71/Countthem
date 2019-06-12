@@ -79,20 +79,22 @@ extension AddItemDebtBookController: UITextFieldDelegate {
 extension AddItemDebtBookController {
     
     @IBAction func done() {
-        let name = nameTextField.text!
-        let money = moneyTextField.text!
-        let date = datePicker.date
-        let convertedMoney = Double(money)
-        let convertedDate = date as NSDate
-        if let addWhat = addWhat {
-            if addWhat == "Debt" {
-                debtBookHelper.addDebt(name: name, money: convertedMoney!, date: convertedDate)
-            } else if addWhat == "Debtor" {
-                debtBookHelper.addDebtor(name: name, money: convertedMoney!, date: convertedDate)
+        if let name = nameTextField.text,
+            let money = moneyTextField.text {
+            let date = datePicker.date
+            let convertedMoney = Double(money)
+            let convertedDate = date as NSDate
+            if let addWhat = addWhat, name != "", money != "" {
+                if addWhat == "Debt" {
+                    debtBookHelper.addDebt(name: name, money: convertedMoney!, date: convertedDate)
+                } else if addWhat == "Debtor" {
+                    debtBookHelper.addDebtor(name: name, money: convertedMoney!, date: convertedDate)
+                }
+                navigationController?.popViewController(animated: true)
+                
             }
-            navigationController?.popViewController(animated: true)
-            
         }
+        
     }
     
 }

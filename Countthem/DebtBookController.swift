@@ -27,6 +27,7 @@ class DebtBookController: UITableViewController {
     let appDesignHelper = AppDesingHelper()
     let debtBookHelper = DebtBookHelper()
     let appAnimation = AppAnimationHelper()
+    let currencyHelper = CurrencyHelper()
     
     var sharedIndexPath: IndexPath?
     var toDelete = String()
@@ -204,12 +205,12 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
         if array is [Debt] {
             let array: [Debt] = array as! [Debt]
             cell.nameLabel.text = array[indexPath.row].name!
-            cell.priceLabel.text = "$\(array[indexPath.row].money)"
+            cell.priceLabel.text = "\(currencyHelper.getCurrentSign())\(array[indexPath.row].money)"
             cell.dateLabel.text = dateFormatter.string(from: array[indexPath.row].date! as Date)
         } else if array is [Debtor] {
             let array: [Debtor] = array as! [Debtor]
             cell.nameLabel.text = array[indexPath.row].name!
-            cell.priceLabel.text = "-$\(array[indexPath.row].money)"
+            cell.priceLabel.text = "-\(currencyHelper.getCurrentSign())\(array[indexPath.row].money)"
             cell.dateLabel.text = dateFormatter.string(from: array[indexPath.row].date! as Date)
         }
         
