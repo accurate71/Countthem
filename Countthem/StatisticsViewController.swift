@@ -21,8 +21,10 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     
     // MARK: - Views
     let segmentedControll: UISegmentedControl = {
+        let calendarTitle = NSLocalizedString("Calendar", comment: "The title of the calendar")
+        let statsTitle = NSLocalizedString("Stats", comment: "The title of the stats for segmented controll")
         let appDesignHelper = AppDesingHelper()
-        let items = ["Calendar", "Stats"]
+        let items = [calendarTitle, statsTitle]
         let controll = UISegmentedControl(items: items)
         controll.translatesAutoresizingMaskIntoConstraints = false
         controll.tintColor = appDesignHelper.mainColor
@@ -51,7 +53,8 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     var calendarCell: UITableViewCell?
     let totalDayTitle: UILabel = {
         let label = UILabel()
-        label.text = "On Day:"
+        let labelString = NSLocalizedString("On day", comment: "The label is for main info")
+        label.text = labelString
         label.textAlignment = .center
         label.font = label.font.withSize(24)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +78,8 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     }()
     let totalMonthTitle: UILabel = {
         let label = UILabel()
-        label.text = "On Month:"
+        let labelString = NSLocalizedString("On", comment: "The label is for main info")
+        label.text = labelString
         label.textAlignment = .center
         label.font = label.font.withSize(24)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -139,11 +143,11 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
         allExpenses = expensesHelper.getExpenses()
         
         if let expenses = expenses, let allExpenses = allExpenses {
-            totalDayValue.text = "$\(setTotalDay(expenses: expenses, date: currentDate))"
-            totalMonthValue.text = "$\(setTotalMonth(expenses: allExpenses, date: currentDate))"
+            totalDayValue.text = "\(currencyHelper.getCurrentSign())\(setTotalDay(expenses: expenses, date: currentDate))"
+            totalMonthValue.text = "\(currencyHelper.getCurrentSign())\(setTotalMonth(expenses: allExpenses, date: currentDate))"
         } else {
-            totalDayValue.text = "$0.0"
-            totalMonthValue.text = "0.0"
+            totalDayValue.text = "\(currencyHelper.getCurrentSign())0.0"
+            totalMonthValue.text = "\(currencyHelper.getCurrentSign())0.0"
         }
         
         categories = categoriesHelper.getCategories()
@@ -435,8 +439,8 @@ extension StatisticsViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "LLLL"
         let nameOfMonth = dateFormatter.string(from: date)
-        
-        totalMonthTitle.text = "On \(nameOfMonth):"
+        let auxString = NSLocalizedString("On", comment: "Still for main info")
+        totalMonthTitle.text = "\(auxString) \(nameOfMonth):"
         
         for expense in expenses {
             let monthToCompare = dateFormatter.string(from: expense.date!)

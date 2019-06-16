@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		40E9FEFF00C521CE94DB40B5 /* Pods_Countthem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 196338DF1F2970EE61B64879 /* Pods_Countthem.framework */; };
+		EA05ABA322B6391D00D052E2 /* AppStoreReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA05ABA222B6391D00D052E2 /* AppStoreReviewManager.swift */; };
 		EA06A0EB228BDD7D0010E6AB /* CategoriesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA06A0EA228BDD7D0010E6AB /* CategoriesHelper.swift */; };
 		EA0DA31022953F5E0095499F /* DebtBookController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DA30F22953F5E0095499F /* DebtBookController.swift */; };
 		EA0DA312229545040095499F /* Debt+DebtorsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */; };
 		EA10E6F12294201D00EE5FA0 /* AppDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */; };
-		EA13755722AF577000E9AEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA13755622AF577000E9AEC2 /* Assets.xcassets */; };
 		EA180D932292818500603B8F /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA180D922292818500603B8F /* IconCollectionViewCell.swift */; };
 		EA1D7B232287ECD3005B0BF1 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D7B222287ECD3005B0BF1 /* ExpenseTableViewCell.swift */; };
 		EA1D7B262288F993005B0BF1 /* SettingsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D7B252288F993005B0BF1 /* SettingsPageViewController.swift */; };
@@ -23,6 +23,7 @@
 		EA57499022842EAA0058D576 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA57498E22842EAA0058D576 /* LaunchScreen.storyboard */; };
 		EA6FBAC2229E442400C1C731 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */; };
 		EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */; };
+		EA72B8C922B0F0F30031DCA4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA72B8CB22B0F0F30031DCA4 /* Localizable.strings */; };
 		EA7BC28E22A139B300C5A0BF /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BC28D22A139B300C5A0BF /* StatsTableViewCell.swift */; };
 		EA7D445A22A7515B002422D4 /* CurrencyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7D445922A7515B002422D4 /* CurrencyHelper.swift */; };
 		EA8170C422898E7200464744 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8170C322898E7200464744 /* CategoriesViewController.swift */; };
@@ -34,17 +35,18 @@
 		EAC8D5972299425A002005E7 /* DebtBookHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC8D5962299425A002005E7 /* DebtBookHelper.swift */; };
 		EACB725222A78AB900FD159B /* defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = EACB725122A78AB900FD159B /* defaults.plist */; };
 		EAD005C022A799E9005CE548 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD005BF22A799E9005CE548 /* CurrencyViewController.swift */; };
+		EAD82F3C22B62E410042A249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD82F3B22B62E410042A249 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		196338DF1F2970EE61B64879 /* Pods_Countthem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Countthem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFA89284AD1C8D27ECF8320 /* Pods-Countthem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countthem.release.xcconfig"; path = "Pods/Target Support Files/Pods-Countthem/Pods-Countthem.release.xcconfig"; sourceTree = "<group>"; };
 		84166AAFFEF06A83E8CC70EA /* Pods-Countthem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countthem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Countthem/Pods-Countthem.debug.xcconfig"; sourceTree = "<group>"; };
+		EA05ABA222B6391D00D052E2 /* AppStoreReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewManager.swift; sourceTree = "<group>"; };
 		EA06A0EA228BDD7D0010E6AB /* CategoriesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesHelper.swift; sourceTree = "<group>"; };
 		EA0DA30F22953F5E0095499F /* DebtBookController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtBookController.swift; sourceTree = "<group>"; };
 		EA0DA311229545040095499F /* Debt+DebtorsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Debt+DebtorsCollectionViewCell.swift"; sourceTree = "<group>"; };
 		EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDesignHelper.swift; sourceTree = "<group>"; };
-		EA13755622AF577000E9AEC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		EA180D922292818500603B8F /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
 		EA1D7B222287ECD3005B0BF1 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		EA1D7B252288F993005B0BF1 /* SettingsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,10 @@
 		EA57499122842EAA0058D576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA6FBAC1229E442400C1C731 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		EA6FEE1C228578ED006847E9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		EA72B8C722B0F0E00031DCA4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		EA72B8C822B0F0E00031DCA4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		EA72B8CA22B0F0F30031DCA4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EA72B8CC22B0F0F80031DCA4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7BC28D22A139B300C5A0BF /* StatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
 		EA7D445922A7515B002422D4 /* CurrencyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHelper.swift; sourceTree = "<group>"; };
 		EA8170C322898E7200464744 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +74,7 @@
 		EAC8D5962299425A002005E7 /* DebtBookHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtBookHelper.swift; sourceTree = "<group>"; };
 		EACB725122A78AB900FD159B /* defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
 		EAD005BF22A799E9005CE548 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		EAD82F3B22B62E410042A249 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Documents/Countthem/Countthem/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,9 +149,10 @@
 				EA57498222842EA90058D576 /* AppDelegate.swift */,
 				EA57498622842EA90058D576 /* Main.storyboard */,
 				EA57498E22842EAA0058D576 /* LaunchScreen.storyboard */,
-				EA13755622AF577000E9AEC2 /* Assets.xcassets */,
+				EAD82F3B22B62E410042A249 /* Assets.xcassets */,
 				EA57499122842EAA0058D576 /* Info.plist */,
 				EACB725122A78AB900FD159B /* defaults.plist */,
+				EA72B8CB22B0F0F30031DCA4 /* Localizable.strings */,
 			);
 			path = Countthem;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 				EA10E6F02294201D00EE5FA0 /* AppDesignHelper.swift */,
 				EAC8D5962299425A002005E7 /* DebtBookHelper.swift */,
 				EA7D445922A7515B002422D4 /* CurrencyHelper.swift */,
+				EA05ABA222B6391D00D052E2 /* AppStoreReviewManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -219,6 +228,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = EA57497622842EA90058D576;
 			productRefGroup = EA57498022842EA90058D576 /* Products */;
@@ -235,10 +245,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA72B8C922B0F0F30031DCA4 /* Localizable.strings in Resources */,
 				EACB725222A78AB900FD159B /* defaults.plist in Resources */,
 				EA57499022842EAA0058D576 /* LaunchScreen.storyboard in Resources */,
-				EA13755722AF577000E9AEC2 /* Assets.xcassets in Resources */,
 				EA57498822842EA90058D576 /* Main.storyboard in Resources */,
+				EAD82F3C22B62E410042A249 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +328,7 @@
 				EA8170C62289918700464744 /* AddCategoryPageViewController.swift in Sources */,
 				EA1D7B232287ECD3005B0BF1 /* ExpenseTableViewCell.swift in Sources */,
 				EA6FEE1D228578ED006847E9 /* CategoryCollectionViewCell.swift in Sources */,
+				EA05ABA322B6391D00D052E2 /* AppStoreReviewManager.swift in Sources */,
 				EA57498522842EA90058D576 /* MainPageViewController.swift in Sources */,
 				EAC85B472290563F007B0768 /* AddExpenseTableViewController.swift in Sources */,
 				EA57498322842EA90058D576 /* AppDelegate.swift in Sources */,
@@ -336,6 +348,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EA57498722842EA90058D576 /* Base */,
+				EA72B8C722B0F0E00031DCA4 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -344,8 +357,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				EA57498F22842EAA0058D576 /* Base */,
+				EA72B8C822B0F0E00031DCA4 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		EA72B8CB22B0F0F30031DCA4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA72B8CA22B0F0F30031DCA4 /* en */,
+				EA72B8CC22B0F0F80031DCA4 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -355,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -416,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

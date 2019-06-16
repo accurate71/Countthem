@@ -86,13 +86,15 @@ class AddCategoryPageViewController: UIViewController {
      TabBar and some attributes of the view.
     */
     func setupSuperview(){
-        self.title = "Add Category"
+        self.title = NSLocalizedString("Add category", comment: "title for add category screen")
         view.backgroundColor = UIColor.white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addButton(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Add", comment: "Title for add button"), style: .done, target: self, action: #selector(addButton(sender:)))
     }
     
+    //
     // MARK: - Setting Views
     //All UIviews are implement here, all the constarits of the views are implement in the method as well
+    //
     func setupViews() {
         
         view.backgroundColor = UIColor.white
@@ -139,7 +141,7 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
         // Setup TextField
         let textField: UITextField = {
             let field = UITextField()
-            field.placeholder = "Category Name"
+            field.placeholder = NSLocalizedString("Category name", comment: "Placeholder for category name")
             field.translatesAutoresizingMaskIntoConstraints = false
             field.delegate = self
             field.tag = 11
@@ -206,9 +208,9 @@ extension AddCategoryPageViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Type a category name"
+            return NSLocalizedString("Type a category name", comment: "Tips for textfields")
         case 1:
-            return "Choose an icon"
+            return NSLocalizedString("Choose an icon", comment: "Choose an icon for your category")
         default:
             fatalError()
         }
@@ -252,7 +254,6 @@ extension AddCategoryPageViewController: UICollectionViewDelegate, UICollectionV
 extension AddCategoryPageViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        //name = textField.text!
         return true
     }
 }

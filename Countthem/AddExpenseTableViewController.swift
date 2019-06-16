@@ -48,11 +48,23 @@ class AddExpenseTableViewController: UITableViewController {
         name = textfiled1.text
         if let name = name, let price = price, let category = category {
             print("I'm working")
-            let convertedPrice = Double(price)!
-            ExpensesHelper().addExpense(name: name, price: convertedPrice, date: currentDate, category: category)
-            print("\(name), \(price),\(category)")
-            navigationController?.popViewController(animated: true)
+            if name == "" || price == "" {
+                showAlert()
+            } else {
+                let convertedPrice = Double(price)!
+                ExpensesHelper().addExpense(name: name, price: convertedPrice, date: currentDate, category: category)
+                navigationController?.popViewController(animated: true)
+            }
         }
+    }
+    // In case if the user didn't fill the fields before tapping button, the alert will be shown.
+    func showAlert() {
+        let alertControllerTitle = NSLocalizedString("Warning", comment: "The title of alert controller")
+        let message = NSLocalizedString("Please, fill the fields", comment: "The message of errors")
+        let alertController = UIAlertController(title: alertControllerTitle, message: message, preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: "OK!", style: .cancel, handler: nil)
+        alertController.addAction(actionOk)
+        present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -77,7 +89,7 @@ class AddExpenseTableViewController: UITableViewController {
         //The text field is using for getting Expense name
         let nameTextField: UITextField = {
             let field = UITextField()
-            field.placeholder = "Expense Name"
+            field.placeholder = NSLocalizedString("Expense name", comment: "The textfield place holder")
             field.tag = 11
             field.translatesAutoresizingMaskIntoConstraints = false
             field.clearButtonMode = .whileEditing
@@ -87,7 +99,7 @@ class AddExpenseTableViewController: UITableViewController {
         // The text field is using for getting Expense price
         let priceTextField: UITextField = {
             let field = UITextField()
-            field.placeholder = "Expense Price"
+            field.placeholder = NSLocalizedString("Expense price", comment: "The textfield place holder")
             field.tag = 22
             field.translatesAutoresizingMaskIntoConstraints = false
             field.clearButtonMode = .whileEditing
@@ -176,10 +188,10 @@ class AddExpenseTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0: return "Category"
-        case 1: return "Date"
-        case 2: return "Type an expense name"
-        case 3: return "Type a expense price"
+        case 0: return NSLocalizedString("Category", comment: "The header for category")
+        case 1: return NSLocalizedString("Date", comment: "The header for date")
+        case 2: return NSLocalizedString("Type an expense name", comment: "The header for textfield")
+        case 3: return NSLocalizedString("Type an expense price", comment: "The header for textfield")
         default:
             fatalError()
         }
@@ -192,9 +204,9 @@ extension AddExpenseTableViewController {
     func setupNavBar(_ navbar:UINavigationBar){
         navbar.tintColor = UIColor.white
         navbar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addExpenseAction(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("Add", comment: "Add button"), style: .done, target: self, action: #selector(addExpenseAction(sender:)))
         navigationController?.navigationBar.prefersLargeTitles = false
-        title = "Add Expense"
+        title = NSLocalizedString("Add Expense", comment: "The title of Add expense page")
     }
     
 }

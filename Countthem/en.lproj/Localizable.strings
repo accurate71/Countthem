@@ -1,0 +1,55 @@
+/* 
+  Localizable.strings
+  Countthem
+
+  Created by Accurate on 12/06/2019.
+  Copyright © 2019 Kirill Pushkarskiy. All rights reserved.
+*/
+
+"Today" = "Today";
+"Debt book" = "Debt book";
+"Statistics" = "Statistics";
+"Settings" = "Settings";
+"Add Expense" = "Add Expense";
+"Add" = "Add";
+"Category" = "Category";
+"Date" = "Date";
+"Type an expense name" = "Type an expense name";
+"Expense name" = "Expense name";
+"Type an expense price" = "Type an expense price";
+"Expense price" = "Expense price";
+"Delete" = "Delete";
+"Debt" = "Debt";
+"Debtor" = "Debtor";
+"Add debt" = "Add debt";
+"Add debtor" = "Add debtor";
+"When?" = "When?";
+"Who?" = "Who?";
+"How much?" = "How much?";
+"Type a name" = "Type a name";
+"Type amount" = "Type amount";
+"Calendar" = "Calendar";
+"Stats" = "Stats";
+"On day" = "On day";
+"On" = "On";
+"Total" = "Total";
+"Create and manage your categories" = "Create and manage your categories";
+"Manage Currency" = "Manage Currency";
+"Currency" = "Currency";
+"Learn more about the app" = "Learn more about the app";
+"About" = "About";
+"Categories" = "Categories";
+"Type a category name" = "Type a category name";
+"Category name" = "Category Name";
+"Choose an icon" = "Choose an icon";
+"Empty" = "Empty";
+"from" = "from";
+"to" = "to";
+"Type amount" = "Type amount";
+"Convert" = "Convert";
+"Please, fill the fields" = "Please, fill the fields";
+"Warning" = "Warning";
+
+
+
+

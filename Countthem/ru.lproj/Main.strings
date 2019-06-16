@@ -1,0 +1,54 @@
+
+/* Class = "UITabBarItem"; title = "Debt Book"; ObjectID = "03o-5D-ktO"; */
+"03o-5D-ktO.title" = "Долги";
+
+/* Class = "UITextField"; placeholder = "Type amount"; ObjectID = "4ug-D8-rI7"; */
+"4ug-D8-rI7.placeholder" = "Размер долга";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "5eM-Cw-3Hj"; */
+"5eM-Cw-3Hj.text" = "Имя";
+
+/* Class = "UILabel"; text = "22.05.19"; ObjectID = "6Du-7S-qMX"; */
+"6Du-7S-qMX.text" = "22.05.19";
+
+/* Class = "UITextField"; placeholder = "Type a name"; ObjectID = "8ov-4O-9O0"; */
+"8ov-4O-9O0.placeholder" = "Введите имя";
+
+/* Class = "UITabBarItem"; title = "Statistics"; ObjectID = "HkM-80-2lT"; */
+"HkM-80-2lT.title" = "Статистика";
+
+/* Class = "UITableViewSection"; headerTitle = "How much?"; ObjectID = "Jva-Sy-6lH"; */
+"Jva-Sy-6lH.headerTitle" = "Сколько?";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "OgE-Ee-zUg"; */
+"OgE-Ee-zUg.title" = "Настройки";
+
+/* Class = "UILabel"; text = "22.05.19"; ObjectID = "Tok-Dl-Rmb"; */
+"Tok-Dl-Rmb.text" = "22.05.19";
+
+/* Class = "UITableViewSection"; headerTitle = "When?"; ObjectID = "eBv-AB-8Sx"; */
+"eBv-AB-8Sx.headerTitle" = "Когда?";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "hAT-aG-xSY"; */
+"hAT-aG-xSY.title" = "Title";
+
+/* Class = "UILabel"; text = "$123"; ObjectID = "kAa-5p-D5d"; */
+"kAa-5p-D5d.text" = "$123";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "neE-1b-B9j"; */
+"neE-1b-B9j.text" = "Имя";
+
+/* Class = "UITableViewSection"; headerTitle = "Who?"; ObjectID = "nsw-Kp-clj"; */
+"nsw-Kp-clj.headerTitle" = "Кто?";
+
+/* Class = "UILabel"; text = "Debt"; ObjectID = "olC-lS-X9j"; */
+"olC-lS-X9j.text" = "Долги";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "sms-QE-50U"; */
+"sms-QE-50U.title" = "Item";
+
+/* Class = "UILabel"; text = "$123"; ObjectID = "wYs-rZ-EPE"; */
+"wYs-rZ-EPE.text" = "$123";
+
+/* Class = "UILabel"; text = "Debtor"; ObjectID = "yNI-Or-KKy"; */
+"yNI-Or-KKy.text" = "Должники";

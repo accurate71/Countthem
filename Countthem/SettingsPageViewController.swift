@@ -11,6 +11,7 @@ import UIKit
 class SettingsPageViewController: UIViewController {
     
     let currencyHelper = CurrencyHelper()
+    let appDesignHelper = AppDesingHelper()
     
     var currentSign: String?
 
@@ -30,11 +31,11 @@ class SettingsPageViewController: UIViewController {
     }
     
     func setupNavigationBar() {
-        self.title = "Settings"
+        let titleString = NSLocalizedString("Settings", comment: "The title of settings page")
+        self.title = titleString
         navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationItem.title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.barTintColor = AppDesingHelper().mainColor
+        navigationController?.navigationBar.barTintColor = appDesignHelper.mainColor
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
@@ -48,7 +49,7 @@ class SettingsPageViewController: UIViewController {
             table.dataSource = self
             table.translatesAutoresizingMaskIntoConstraints = false
             table.isScrollEnabled = false
-            table.backgroundColor = UIColor.init(hexString: AppDesingHelper().backgroundColor)
+            table.backgroundColor = UIColor.init(hexString: appDesignHelper.backgroundColor)
             return table
         }()
         
@@ -88,28 +89,23 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
         
         let categoryLabel: UILabel = {
             let label = UILabel()
-            label.text = "Category"
+            let labelString = NSLocalizedString("Category", comment: "Category option")
+            label.text = labelString
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
         
         let currencyLabel: UILabel = {
             let label = UILabel()
-            label.text = "Currency"
+            let labelString = NSLocalizedString("Currency", comment: "Currency option")
+            label.text = labelString
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
         
         let currentCurrency: UILabel = {
             let label = UILabel()
-            if let currentSign = currentSign {
-                switch currentSign {
-                case "$": label.text = "Dollar"
-                case "₽": label.text = "Ruble"
-                case "€": label.text = "Euro"
-                default: fatalError()
-                }
-            }
+            label.text = currencyHelper.getCurrentSign()
             label.textColor = .lightGray
             label.textAlignment = .right
             return label
@@ -122,7 +118,8 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
         
         let aboutLabel: UILabel = {
             let label = UILabel()
-            label.text = "About"
+            let labelString = NSLocalizedString("About", comment: "About the app")
+            label.text = labelString
             label.translatesAutoresizingMaskIntoConstraints = false
             return label
         }()
@@ -131,9 +128,6 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
             return createCell(label: categoryLabel, accessoryType: .disclosureIndicator)
         }()
         categoryCell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openCategoryView(sender:))))
-//        let currencyCell: UITableViewCell = {
-//            return createCell(label: currencyLabel, accessoryType: .none)
-//        }()
         
         let testCell = UITableViewCell()
         testCell.accessoryType = .disclosureIndicator
@@ -171,9 +165,9 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0: return "Create and manage your categories"
-        case 1: return "Manage Currency"
-        case 2: return "Learn mode about the app"
+        case 0: return NSLocalizedString("Create and manage your categories", comment: "Category description")
+        case 1: return NSLocalizedString("Manage Currency", comment: "Currency description")
+        case 2: return NSLocalizedString("Learn more about the app", comment: "Learn more about us")
         default:
             fatalError()
         }

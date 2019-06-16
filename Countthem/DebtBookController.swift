@@ -64,6 +64,8 @@ class DebtBookController: UITableViewController {
     
     // Design Titles
     func setupTitles() {
+        let debtBookTitleString = NSLocalizedString("Debt book", comment: "The main title of the screen")
+        title = debtBookTitleString
         debtTitleLabel.textColor = appDesignHelper.anotherColor
         debtorTitleLabel.textColor = appDesignHelper.anotherColor
     }
@@ -157,7 +159,8 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func showMenu(cell: UICollectionViewCell) {
-        let menuItem = UIMenuItem(title: "Delete", action: #selector(deleteAction(sender:)))
+        let deleteString = NSLocalizedString("Delete", comment: "The button to delete an debt or an debtor")
+        let menuItem = UIMenuItem(title: deleteString, action: #selector(deleteAction(sender:)))
         let menu = UIMenuController.shared
         menu.arrowDirection = .default
         menu.menuItems = [menuItem]
@@ -232,7 +235,6 @@ extension DebtBookController {
         navbar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navbar.prefersLargeTitles = false
         navbar.isTranslucent = false
-        title = "Debt Book"
     }
     
 }
@@ -241,14 +243,16 @@ extension DebtBookController {
 extension DebtBookController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let debtTitleString = NSLocalizedString("Add debt", comment: "The screen for adding debt")
+        let debtorTitleString = NSLocalizedString("Add debtor", comment: "The screen for adding debtor")
         let vc = segue.destination as! AddItemDebtBookController
         if segue.identifier == "AddDebt" {
             print("segue is add debt")
-            vc.title = "Add Debt"
+            vc.title = debtTitleString
             vc.addWhat = "Debt"
         } else if segue.identifier == "AddDebtor" {
             print("segue is add debtor")
-            vc.title = "Add Debtor"
+            vc.title = debtorTitleString
             vc.addWhat = "Debtor"
         }
     }

@@ -10,15 +10,20 @@ import UIKit
 
 class MainPageViewController: UIViewController {
     
+    //
     // MARK: - Helpers
+    //
+    //
     let appDesignHelper = AppDesingHelper()
     let appAnimationHelper = AppAnimationHelper()
     var categoriesHelper = CategoriesHelper()
     var expensesHelper = ExpensesHelper()
     let currencyHelper = CurrencyHelper()
     
+    //
     // Variables
-    
+    //
+    //
     var categories = [Category]()
     var expenses = [Expense]()
     var tableView = UITableView()
@@ -59,7 +64,8 @@ class MainPageViewController: UIViewController {
     }
     
     func setTitle() {
-        self.title = "Today: \(currentSign!)\(total ?? 0.0)"
+        let todayString = NSLocalizedString("Today", comment: "Today is shown")
+        self.title = "\(todayString): \(currentSign!)\(total ?? 0.0)"
     }
     // MARK: - Setting views
     func setupViews() {
@@ -104,15 +110,6 @@ class MainPageViewController: UIViewController {
         }()
         self.tableView = tableView
         
-        // MARK: Separater View
-        let separatorView: UIView = {
-            let view = UIView()
-            view.backgroundColor = UIColor.purple
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.alpha = 0.2
-            return view
-        }()
-        
         // MARK: messageView
         let messageView: UIView = {
             let view = UIView()
@@ -121,12 +118,14 @@ class MainPageViewController: UIViewController {
             return view
         }()
         let messageLabel: UILabel = {
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+            let label = UILabel(frame: CGRect.zero)
             label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = "Empty"
+            let emptyString = NSLocalizedString("Empty", comment: "The lis of expenses is empty")
+            label.text = emptyString
             label.textColor = appDesignHelper.mainColor
             label.textAlignment = .center
             label.font = label.font.withSize(32)
+            label.adjustsFontSizeToFitWidth = true
             return label
         }()
         let messageImage: UIImageView = {
@@ -151,27 +150,25 @@ class MainPageViewController: UIViewController {
         messageImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         messageView.addSubview(stack)
-        stack.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        stack.centerXAnchor.constraint(equalTo: messageView.centerXAnchor, constant: 0).isActive = true
+        stack.widthAnchor.constraint(equalToConstant: messageView.frame.size.width).isActive = true
         stack.centerYAnchor.constraint(equalTo: messageView.centerYAnchor, constant: 0).isActive = true
+        stack.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: 20).isActive = true
+        stack.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -20).isActive = true
         // MARK: Adding views and constraits
         self.view.addSubview(myCollectionView)
-        self.view.addSubview(separatorView)
         // FIXME: - The problem is if an user deletes the last item, the view didn't change background and the lable isn't visible
         if expenses.isEmpty {
             print("The expenses array is empty")
             self.view.addSubview(messageView)
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": messageView]))
-            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": separatorView]))
-            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v1(0.5)][v2]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": separatorView, "v2": messageView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v2]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v2": messageView]))
         } else {
             print("The expenses array isn't empty")
             self.view.addSubview(tableView)
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": myCollectionView]))
             self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": tableView]))
-            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": separatorView]))
-            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v1(0.5)][v2]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v1": separatorView, "v2": tableView]))
+            self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0(100)][v2]|", options: .init(), metrics: nil, views: ["v0": myCollectionView, "v2": tableView]))
         }
         
     }
@@ -240,7 +237,9 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
             print("The cell is nil")
             return UITableViewCell()
         }
-        guard let category = expenses[indexPath.row].category else { print("The category of the expense is nil"); return UITableViewCell()}
+        guard let category = expenses[indexPath.row].category else { print("The category of the expense is nil"); return UITableViewCell()
+            
+        }
         expense.categoryImage.image = UIImage(named: category.icon!)
         expense.nameCategory.text = category.name!
         expense.nameExpense.text = expenses[indexPath.row].name
@@ -251,7 +250,8 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (rowAction, indexPath) in
+        let deleteString = NSLocalizedString("Delete", comment: "Delete an expense")
+        let deleteAction = UITableViewRowAction(style: .destructive, title: deleteString) { (rowAction, indexPath) in
             self.expensesHelper.removeExpenses(expense: self.expenses[indexPath.row])
             self.expenses.remove(at: indexPath.row)
             tableView.reloadData()

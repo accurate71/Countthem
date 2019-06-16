@@ -10,15 +10,24 @@ import UIKit
 
 class CurrencyViewController: UIViewController {
     
+    //
     // MARK: - Helpers
+    //
+    //
     let currencyHelper = CurrencyHelper()
     let designHelper = AppDesingHelper()
     
+    //
     // MARK: - Variables
+    //
+    //
     var currentSign: String?
     var currencyArray = [String]()
     
+    //
     // MARK: - Views
+    //
+    //
     let signSwitcher = UISegmentedControl(frame: CGRect(x: 0, y: 0, width: 210, height: 50))
     let converterLabel = UILabel()
     let leftTF = UITextField()
@@ -45,10 +54,15 @@ class CurrencyViewController: UIViewController {
         view.endEditing(true)
     }
     
+    //
     // MARK: - Setup views method
+    //
+    //
     func setupViews() {
+        //
         // MARK: Setting views
         // Sign Switcher
+        //
         signSwitcher.tintColor = designHelper.mainColor
         signSwitcher.insertSegment(withTitle: "$", at: 0, animated: true)
         signSwitcher.insertSegment(withTitle: "₽", at: 1, animated: true)
@@ -61,11 +75,11 @@ class CurrencyViewController: UIViewController {
         converterLabel.font = UIFont.boldSystemFont(ofSize: 20)
         converterLabel.textAlignment = .center
         // Text fields and their stackview
-        leftTF.placeholder = "from"
+        leftTF.placeholder = NSLocalizedString("from", comment: "Choose a currency")
         leftTF.borderStyle = .roundedRect
         leftTF.textAlignment = .center
         leftTF.inputView = currencyPicker
-        rightTF.placeholder = "to"
+        rightTF.placeholder = NSLocalizedString("to", comment: "Choose a currency")
         rightTF.borderStyle = .roundedRect
         rightTF.textAlignment = .center
         rightTF.inputView = currencyPicker
@@ -78,7 +92,7 @@ class CurrencyViewController: UIViewController {
         currencyPicker.delegate = self
         currencyPicker.dataSource = self
         // Amount TextField
-        amountTextField.placeholder = "Type amount"
+        amountTextField.placeholder = NSLocalizedString("Type amount", comment: "The amount which need to convert")
         amountTextField.keyboardType = .decimalPad
         amountTextField.borderStyle = .roundedRect
         amountTextField.textAlignment = .center
@@ -90,7 +104,7 @@ class CurrencyViewController: UIViewController {
         valueLabel.text = "0"
         valueLabel.adjustsFontSizeToFitWidth = true
         // Convert Button
-        convertButton.setTitle("Convert", for: .normal)
+        convertButton.setTitle(NSLocalizedString("Convert", comment: "The button for converting"), for: .normal)
         convertButton.layer.cornerRadius = 8
         convertButton.backgroundColor = designHelper.mainColor
         convertButton.addTarget(self, action: #selector(convert(sender:)), for: .touchDown)
@@ -142,7 +156,7 @@ class CurrencyViewController: UIViewController {
 // MARK: - Setup Navigation Bar
 extension CurrencyViewController {
     func setupNavigationBar(){
-        title = "Currency"
+        title = NSLocalizedString("Currency", comment: "The title of currency page")
     }
 }
 
@@ -241,7 +255,7 @@ extension CurrencyViewController {
                 }
                 
             } else {
-                self.valueLabel.text = "Please, Fill the fields"
+                self.valueLabel.text = NSLocalizedString("Please, fill the fields", comment: "The gentle notification")
             }
         }
     }

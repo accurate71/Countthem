@@ -15,6 +15,10 @@ class CategoriesViewController: UIViewController {
     
     var categories = [Category]()
     
+    // MARK: - Helpers
+    let categoryHelper = CategoriesHelper()
+    let appDesingHelper = AppDesingHelper()
+    
     // Create a view with a button
     let backgroundView: UIView = {
         let view = UIView()
@@ -47,7 +51,7 @@ class CategoriesViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Fetching categories
-        categories = CategoriesHelper().getCategories()
+        categories = categoryHelper.getCategories()
         
         // Setup Tabbar
         tabBarController?.tabBar.isHidden = true
@@ -58,27 +62,37 @@ class CategoriesViewController: UIViewController {
         setupViews()
     }
     
+    //
     // MARK: Right Bar Button Action
     // The category will be added by the method
+    //
+    //
     @objc func addCategory(sender: UIBarButtonItem!) {
-        print("Add category button has been tapped")
         self.navigationController?.pushViewController(AddCategoryPageViewController.init(), animated: true)
     }
     
+    //
     // MARK: Setup Nav Bar method
+    //
+    //
     func setupNavigationBar() {
-        title = "Categories"
+        title = NSLocalizedString("Categories", comment: "The title of Categories screen")
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCategory(sender:))), animated: true)
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = UIColor.white
     }
     
+    //
     // MARK: Setup View Method
+    //
+    //
     func setupViews() {
         
+        //
         // Setup SuperView
         view.backgroundColor = UIColor.white
         
+        //
         // MARK: Collection View
         let layout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
@@ -89,6 +103,7 @@ class CategoriesViewController: UIViewController {
             return layout
         }()
         
+        //
         // The collection view is needed to display all created categories
         let collectionView:UICollectionView = {
             let collection = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), collectionViewLayout: layout)
@@ -103,9 +118,11 @@ class CategoriesViewController: UIViewController {
             return collection
         }()
         
+        //
         // Adding the collection view to the superview
         view.addSubview(collectionView)
         
+        //
         // ...
         self.collectionView = collectionView
         
@@ -116,7 +133,10 @@ class CategoriesViewController: UIViewController {
 
 }
 
+//
 // MARK: CollectionView Protocols
+//
+//
 extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -132,13 +152,12 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.nameCategoryLabel.textColor = UIColor.white
             cell.backgroundColor = AppDesingHelper().mainColor
             cell.layer.cornerRadius = 8
-//            cell.layer.shadowColor = UIColor.purple.cgColor
-//            cell.layer.shadowOpacity = 0.2
-//            cell.layer.shadowOffset = .init(width: 1, height: 3)
-//            cell.layer.shadowRadius = 1
-//            cell.layer.cornerRadius = 8
-//            cell.layer.borderWidth = 0.1
-//            cell.layer.borderColor = UIColor.purple.cgColor
+            cell.layer.shadowColor = appDesingHelper.mainColor.cgColor
+            cell.layer.shadowOpacity = 1
+            cell.layer.shadowOffset = .init(width: 0, height: 0)
+            cell.layer.shadowRadius = 2
+            //cell.layer.borderWidth = 0.1
+            //cell.layer.borderColor = UIColor.purple.cgColor
             return cell
         }
         return UICollectionViewCell()
@@ -181,7 +200,7 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         if let collection = self.collectionView {
             
             // Ask CategoriesHelper for a help
-            CategoriesHelper().removeCategory(category: categories[index])
+            categoryHelper.removeCategory(category: categories[index])
             
             // Remove a deleted category from a collection
             categories.remove(at: index)
@@ -193,9 +212,10 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
+    //
     // The method is needed when the user want to hide the menu with the delete button which is over Collection cell
+    //
     @objc func removeSubviews(sender: UIView) {
-        print("Has been tapped")
         
         if self.backgroundView.alpha == 0 && self.deleteButton.alpha == 0 {
             deleteButton.removeFromSuperview()

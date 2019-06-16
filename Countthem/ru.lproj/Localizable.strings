@@ -1,0 +1,56 @@
+/* 
+  Localizable.strings
+  Countthem
+
+  Created by Accurate on 12/06/2019.
+  Copyright © 2019 Kirill Pushkarskiy. All rights reserved.
+*/
+
+"Today" = "Сегодня";
+"Debt book" = "Долги";
+"Statistics" = "Статистика";
+"Settings" = "Настройки";
+"Add Expense" = "Добавить покупку";
+"Add" = "Доб.";
+"Category" = "Категория";
+"Date" = "Дата";
+"Type an expense name" = "Что купили?";
+"Expense name" = "Наименование";
+"Type an expense price" = "Сколько потратили?";
+"Expense price" = "Цена";
+"Delete" = "Удалить";
+"Debt" = "Долг";
+"Debtor" = "Должник";
+"Add debt" = "Добавить долг";
+"Add debtor" = "Добавить должника";
+"When?" = "Когда?";
+"Who?" = "Кто?";
+"How much?" = "Где?";
+"Type a name" = "Введите имя";
+"Type amount" = "Количество денег";
+"Calendar" = "Календарь";
+"Stats" = "Общее";
+"On day" = "В день:";
+"On" = "На";
+"Total" = "Общая сумма";
+"Create and manage your categories" = "Создавай категории и управляй ими";
+"Manage Currency" = "Настрой отображение значка валюты";
+"Currency" = "Валюта";
+"Learn more about the app" = "Информация о приложении";
+"About" = "О нас";
+"Categories" = "Категории";
+"Type a category name" = "Введить название категории";
+"Add category" = "Добавить категорию";
+"Category name" = "Название";
+"Choose an icon" = "Выберите иконку";
+"Empty" = "Список ваших расходов пуст";
+"from" = "Из";
+"to" = "В";
+"Type amount" = "Сумма";
+"Convert" = "Конвертировать";
+"Please, fill the fields" = "Заполните все поля";
+"Warning" = "Предупреждение";
+
+
+
+
