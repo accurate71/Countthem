@@ -34,6 +34,7 @@ class AddItemDebtBookController: UITableViewController {
         
         nameTextField.delegate = self
         moneyTextField.delegate = self
+        nameTextField.becomeFirstResponder()
     }
     
     // Design Table view
@@ -71,8 +72,17 @@ extension AddItemDebtBookController {
     
 }
 
+//
+// MARK: - TextField Delegate Methods
+//
+//
 extension AddItemDebtBookController: UITextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameTextField {
+            moneyTextField.becomeFirstResponder()
+        }
+        return true
+    }
 }
 
 // MARK: Adding logic

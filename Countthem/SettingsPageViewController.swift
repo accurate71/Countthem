@@ -89,7 +89,7 @@ extension SettingsPageViewController: UITableViewDelegate, UITableViewDataSource
         
         let categoryLabel: UILabel = {
             let label = UILabel()
-            let labelString = NSLocalizedString("Category", comment: "Category option")
+            let labelString = NSLocalizedString("Categories", comment: "Category option")
             label.text = labelString
             label.translatesAutoresizingMaskIntoConstraints = false
             return label

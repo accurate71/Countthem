@@ -4,9 +4,6 @@
 //
 //  Created by Accurate on 13/05/2019.
 //  Copyright © 2019 Kirill Pushkarskiy. All rights reserved.
-//
-
-// TODO: Изменить дизайн этого экрана, с помощью TableView
 
 import UIKit
 import QuartzCore
@@ -62,19 +59,15 @@ class CategoriesViewController: UIViewController {
         setupViews()
     }
     
-    //
     // MARK: Right Bar Button Action
-    // The category will be added by the method
-    //
-    //
+    /*
+     The category will be added by the method
+     */
     @objc func addCategory(sender: UIBarButtonItem!) {
         self.navigationController?.pushViewController(AddCategoryPageViewController.init(), animated: true)
     }
     
-    //
-    // MARK: Setup Nav Bar method
-    //
-    //
+    // MARK: - Setup Nav Bar method
     func setupNavigationBar() {
         title = NSLocalizedString("Categories", comment: "The title of Categories screen")
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCategory(sender:))), animated: true)
@@ -87,12 +80,8 @@ class CategoriesViewController: UIViewController {
     //
     //
     func setupViews() {
-        
-        //
         // Setup SuperView
         view.backgroundColor = UIColor.white
-        
-        //
         // MARK: Collection View
         let layout: UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
@@ -102,8 +91,6 @@ class CategoriesViewController: UIViewController {
             layout.sectionInset = UIEdgeInsets(top: 16, left: 8, bottom: 0, right: 8)
             return layout
         }()
-        
-        //
         // The collection view is needed to display all created categories
         let collectionView:UICollectionView = {
             let collection = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), collectionViewLayout: layout)
@@ -117,15 +104,9 @@ class CategoriesViewController: UIViewController {
             collection.allowsMultipleSelection = false
             return collection
         }()
-        
-        //
         // Adding the collection view to the superview
         view.addSubview(collectionView)
-        
-        //
-        // ...
         self.collectionView = collectionView
-        
         // Adding constraits
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": collectionView]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: .init(), metrics: nil, views: ["v0": collectionView]))
@@ -133,10 +114,9 @@ class CategoriesViewController: UIViewController {
 
 }
 
-//
-// MARK: CollectionView Protocols
-//
-//
+// MARK: - Collection View Methods
+/*
+ */
 extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -156,37 +136,14 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.layer.shadowOpacity = 1
             cell.layer.shadowOffset = .init(width: 0, height: 0)
             cell.layer.shadowRadius = 2
-            //cell.layer.borderWidth = 0.1
-            //cell.layer.borderColor = UIColor.purple.cgColor
             return cell
         }
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let cell = collectionView.cellForItem(at: indexPath)
-        if let cell = cell {
-            UIView.animate(withDuration: 0.2) {
-                self.backgroundView.alpha = 0.5
-                self.deleteButton.alpha = 1
-            }
-            
-            cell.addSubview(backgroundView)
-            
-            backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeSubviews(sender:))))
-            
-            cell.addSubview(deleteButton)
-            
-            deleteButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeCategory(sender:))))
-            
-            index = indexPath.row
-            
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: .init(), metrics: nil, views: ["v0": backgroundView]))
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-25-[v0]-25-|", options: .init(), metrics: nil, views: ["v0": deleteButton]))
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: .init(), metrics: nil, views: ["v0": backgroundView]))
-            cell.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-25-[v0]-25-|", options: .init(), metrics: nil, views: ["v0": deleteButton]))
-        }
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        showActionMenu(for: cell, with: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -194,38 +151,52 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         backgroundView.removeFromSuperview()
     }
     
-    // MARK: Remove Category Method
-    // Delete a category with a small animation
-    @objc func removeCategory(sender: UIButton) {
-        if let collection = self.collectionView {
-            
-            // Ask CategoriesHelper for a help
-            categoryHelper.removeCategory(category: categories[index])
-            
-            // Remove a deleted category from a collection
-            categories.remove(at: index)
-            collection.reloadData()
-            
-            // Setup an animation
-            AppAnimationHelper().animationDeleting(for: collection)
-            
-        }
-    }
-    
-    //
-    // The method is needed when the user want to hide the menu with the delete button which is over Collection cell
-    //
-    @objc func removeSubviews(sender: UIView) {
-        
-        if self.backgroundView.alpha == 0 && self.deleteButton.alpha == 0 {
-            deleteButton.removeFromSuperview()
-            backgroundView.removeFromSuperview()
-        } else {
-            UIView.animate(withDuration: 0.2) {
-                self.backgroundView.alpha = 0
-                self.deleteButton.alpha = 0
+    /*
+     This method open a menu with the delete button.
+     It takes the cell and it's index to delete the category from Database
+     and the array which are in the top of the file.
+    */
+    func showActionMenu(for cell: UICollectionViewCell, with index: Int) {
+        //Controller
+        let actionViewController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        // Titles
+        let deleteTitle = NSLocalizedString("Delete", comment: "The delete button")
+        let cancelTitle = NSLocalizedString("Cancel", comment: "the cancel button")
+        // Actions
+        let deleteButton = UIAlertAction(title: deleteTitle, style: .destructive) { (action) in
+            // delete cell code
+            print("Delete button tapped")
+            if let collection = self.collectionView {
+                
+                // Ask CategoriesHelper for a help
+                self.categoryHelper.removeCategory(category: self.categories[index])
+                
+                // Remove a deleted category from a collection
+                self.categories.remove(at: index)
+                collection.reloadData()
+                
+                // Setup an animation
+                AppAnimationHelper().animationDeleting(for: collection)
+                
             }
         }
+        let cancelButton = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
+        actionViewController.addAction(deleteButton)
+        actionViewController.addAction(cancelButton)
+        // Add some animations, make the screen be live.
+        UIView.animateKeyframes(withDuration: 0.6, delay: 0.0, options: .beginFromCurrentState, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.3, animations: {
+                cell.center.y += 3
+                cell.alpha = 0.6
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.3, animations: {
+                cell.center.y -= 3
+                cell.alpha = 1
+            })
+        }) { (status) in
+            self.present(actionViewController, animated: true, completion: nil)
+        }
+        
     }
     
     

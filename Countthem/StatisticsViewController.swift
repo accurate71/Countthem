@@ -131,8 +131,6 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
         segmentedControll.selectedSegmentIndex = 0
         setupForCalendar()
         
-        calendarView.delegate = self
-        calendarView.dataSource = self
         self.calendar = calendarView
     }
     
@@ -174,7 +172,7 @@ extension StatisticsViewController {
         
         // *** AutoLayout ***
         NSLayoutConstraint.activate([
-            segmentedControll.widthAnchor.constraint(equalToConstant: 150),
+            segmentedControll.widthAnchor.constraint(equalToConstant: 200),
             segmentedControll.heightAnchor.constraint(equalToConstant: 30),
             segmentedControll.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             segmentedControll.topAnchor.constraint(equalTo: view.topAnchor, constant: 20)
@@ -189,6 +187,8 @@ extension StatisticsViewController {
         
         calendarTableView.delegate = self
         calendarTableView.dataSource = self
+        calendarView.delegate = self
+        calendarView.dataSource = self
         
         // Remove The stats view
         statsTableView.removeFromSuperview()
@@ -434,8 +434,8 @@ extension StatisticsViewController {
         return totalDay
     }
     
-    func setTotalMonth(expenses: [Expense], date: Date) -> Double {
-        var total: Double = 0.0
+    func setTotalMonth(expenses: [Expense], date: Date) -> Float {
+        var total: Float = 0.0
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "LLLL"
         let nameOfMonth = dateFormatter.string(from: date)
@@ -445,7 +445,7 @@ extension StatisticsViewController {
         for expense in expenses {
             let monthToCompare = dateFormatter.string(from: expense.date!)
             if nameOfMonth == monthToCompare {
-                total += expense.price
+                total += Float(expense.price)
             }
         }
         return total

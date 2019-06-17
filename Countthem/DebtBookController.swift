@@ -22,6 +22,8 @@ class DebtBookController: UITableViewController {
     // Buttons
     @IBOutlet weak var addButton1: UIButton!
     @IBOutlet weak var addButton2: UIButton!
+    // TextFields
+    @IBOutlet weak var nameTextField: UITextField!
     
     // MARK: - Helpers
     let appDesignHelper = AppDesingHelper()
@@ -129,15 +131,14 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let longPressGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(testMethod(sender:)))
+        //let longPressGesture = UILongPressGestureRecognizer.init(target: self, action: #selector(testMethod(sender:)))
         if collectionView == debtCollectionView {
             let cell = collectionView.cellForItem(at: indexPath)
             if let cell = cell {
                 toDelete = "Debt"
                 sharedIndexPath = indexPath
                 becomeFirstResponder()
-                cell.addGestureRecognizer(longPressGesture)
-                targetCell = cell
+                showMenuSheet(cell: cell)
                 
             }
         } else if collectionView == debtorCollectionView {
@@ -146,26 +147,37 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
                 toDelete = "Debtor"
                 sharedIndexPath = indexPath
                 becomeFirstResponder()
-                cell.addGestureRecognizer(longPressGesture)
-                targetCell = cell
+                showMenuSheet(cell: cell)
             }
         }
+        
+        
     }
     
-    @objc func testMethod(sender: Any) {
-        if let cell = targetCell {
-            showMenu(cell: cell)
+    func showMenuSheet(cell: UICollectionViewCell) {
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteButton = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            print("Delete button tapped")
+            if let indexPath = self.sharedIndexPath {
+                if self.toDelete == "Debt" {
+                    self.debtBookHelper.removeDebts(debt: self.debtsNames[indexPath.row])
+                    self.debtsNames.remove(at: indexPath.row)
+                    self.debtCollectionView.reloadData()
+                    self.appAnimation.animationDeleting(for: self.debtCollectionView)
+                } else if self.toDelete == "Debtor" {
+                    self.debtBookHelper.removeDebtor(debtor: self.debtorsNames[indexPath.row])
+                    self.debtorsNames.remove(at: indexPath.row)
+                    self.debtorCollectionView.reloadData()
+                    self.appAnimation.animationDeleting(for: self.debtorCollectionView)
+                }
+            }
         }
-    }
-    
-    func showMenu(cell: UICollectionViewCell) {
-        let deleteString = NSLocalizedString("Delete", comment: "The button to delete an debt or an debtor")
-        let menuItem = UIMenuItem(title: deleteString, action: #selector(deleteAction(sender:)))
-        let menu = UIMenuController.shared
-        menu.arrowDirection = .default
-        menu.menuItems = [menuItem]
-        menu.setTargetRect(CGRect.zero, in: cell.contentView)
-        menu.setMenuVisible(true, animated: true)
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print("Cancel button tapped")
+        }
+        actionSheetController.addAction(deleteButton)
+        actionSheetController.addAction(cancelButton)
+        present(actionSheetController, animated: true, completion: nil)
     }
     
     override var canBecomeFirstResponder: Bool {
@@ -177,19 +189,7 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     @objc func deleteAction(sender: Any) {
-        if let indexPath = sharedIndexPath {
-            if toDelete == "Debt" {
-                debtBookHelper.removeDebts(debt: debtsNames[indexPath.row])
-                debtsNames.remove(at: indexPath.row)
-                debtCollectionView.reloadData()
-                appAnimation.animationDeleting(for: debtCollectionView)
-            } else if toDelete == "Debtor" {
-                debtBookHelper.removeDebtor(debtor: debtorsNames[indexPath.row])
-                debtorsNames.remove(at: indexPath.row)
-                debtorCollectionView.reloadData()
-                appAnimation.animationDeleting(for: debtorCollectionView)
-            }
-        }
+        
     }
     
     func decorateCell(_ cell: UICollectionViewCell) {
