@@ -8,6 +8,8 @@
 
 import UIKit
 import FSCalendar
+import SimplePDF
+import PDFKit
 
 class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
     
@@ -18,6 +20,7 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     let expensesHelper = ExpensesHelper()
     let categoriesHelper = CategoriesHelper()
     let currencyHelper = CurrencyHelper()
+    let pdfManager = PDFManager()
     
     // MARK: - Views
     let segmentedControll: UISegmentedControl = {
@@ -124,8 +127,6 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        expenses = expensesHelper.getExpensesWithDate(date: currentDate)
-        allExpenses = expensesHelper.getExpenses()
         setupNavBar()
         setupViews()
         segmentedControll.selectedSegmentIndex = 0
@@ -308,6 +309,8 @@ extension StatisticsViewController {
             navBar.barTintColor = appDesingHelper.mainColor
             navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             navBar.isTranslucent = false
+            self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(moreButtonAction(sender:))), animated: true)
+            navBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
 }
@@ -449,6 +452,59 @@ extension StatisticsViewController {
             }
         }
         return total
+    }
+    
+}
+
+// MARK: - Auxiliary menu methods
+/*
+ The user can create a pdf file to see his statistic in more user-friendly format with the menu.
+ Also the user can clear his statistic. It means the app will clean all the user's data.
+ */
+extension StatisticsViewController {
+    
+    @objc func moreButtonAction(sender: UIBarButtonItem) {
+        let menuActionController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let createPDFButton = UIAlertAction(title: "Export to PDF", style: .default) { _ in
+            self.createPDF()
+        }
+        let clearDataButton = UIAlertAction(title: "Clear Statistics", style: .destructive) { _ in
+            self.cleanData()
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            print("Cancel button tapped")
+        }
+        menuActionController.addAction(createPDFButton)
+        menuActionController.addAction(clearDataButton)
+        menuActionController.addAction(cancelButton)
+        present(menuActionController, animated: true, completion: nil)
+    }
+    
+    func createPDF() {
+        pdfManager.writePDF(title: "Statistics")
+        if let url = pdfManager.getURL() {
+            showPDFMethod(url: url)
+        }
+    }
+    
+    func showPDFMethod(url: URL) {
+        let vc = PDFViewController()
+        vc.url = url
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func cleanData() {
+        let alertController = UIAlertController(title: nil, message: "Are you sure to delete all data?", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .destructive) { _ in
+            print("Deleting...")
+            print("Done!")
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            print("Cancel button tapped")
+        }
+        alertController.addAction(okButton)
+        alertController.addAction(cancelButton)
+        present(alertController, animated: true, completion: nil)
     }
     
 }

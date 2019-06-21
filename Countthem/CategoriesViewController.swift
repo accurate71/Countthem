@@ -42,6 +42,8 @@ class CategoriesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,8 +55,6 @@ class CategoriesViewController: UIViewController {
         // Setup Tabbar
         tabBarController?.tabBar.isHidden = true
         tabBarController?.tabBar.isTranslucent = true
-        
-        setupNavigationBar()
         
         setupViews()
     }
