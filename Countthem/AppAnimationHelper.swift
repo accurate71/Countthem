@@ -24,4 +24,26 @@ class AppAnimationHelper {
         view.layer.add(transition, forKey: nil)
     }
     
+    func clickButton(view: UIView, color1: UIColor, color2: UIColor, completion: (() -> Void)? = nil) {
+        CATransaction.begin()
+        let groups = CAAnimationGroup()
+        
+        let animBackgoundColor = CABasicAnimation(keyPath: "backgroundColor")
+        animBackgoundColor.fromValue = color1.cgColor
+        animBackgoundColor.toValue = color2.cgColor
+        animBackgoundColor.duration = 0.1
+        animBackgoundColor.autoreverses = true
+        
+        let animPosition = CABasicAnimation(keyPath: "position.y")
+        animPosition.fromValue = view.center.y
+        animPosition.toValue = view.center.y + 5.0
+        animPosition.duration = 0.1
+        animPosition.autoreverses = true
+        
+        CATransaction.setCompletionBlock(completion)
+        view.layer.add(animBackgoundColor, forKey: nil)
+        view.layer.add(animPosition, forKey: nil)
+        CATransaction.commit()
+    }
+    
 }

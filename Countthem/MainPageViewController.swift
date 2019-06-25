@@ -209,16 +209,14 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath)
-        UIView.animate(withDuration: 0.3, animations: {
-            cell?.backgroundColor = self.appDesignHelper.mainColor.withAlphaComponent(0.3)
-            cell?.center.y += 5
-        }) { _ in
+        appAnimationHelper.clickButton(view: cell!,
+                                       color1: UIColor.white,
+                                       color2: appDesignHelper.mainColor) {
             let category = self.categories[indexPath.row]
             let addExpenseViewController = AddExpenseTableViewController()
             addExpenseViewController.category = category
             self.navigationController?.pushViewController(addExpenseViewController, animated: true)
         }
-        
     }
     
     

@@ -15,6 +15,7 @@ class CategoriesViewController: UIViewController {
     // MARK: - Helpers
     let categoryHelper = CategoriesHelper()
     let appDesingHelper = AppDesingHelper()
+    let appAnimationHelper = AppAnimationHelper()
     
     // Create a view with a button
     let backgroundView: UIView = {
@@ -183,17 +184,10 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
         actionViewController.addAction(deleteButton)
         actionViewController.addAction(cancelButton)
         // Add some animations, make the screen be live.
-        UIView.animateKeyframes(withDuration: 0.6, delay: 0.0, options: .beginFromCurrentState, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.3, animations: {
-                cell.center.y += 3
-                cell.alpha = 0.6
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.3, animations: {
-                cell.center.y -= 3
-                cell.alpha = 1
-            })
-        }) { (status) in
-            self.present(actionViewController, animated: true, completion: nil)
+        appAnimationHelper.clickButton(view: cell,
+                                       color1: appDesingHelper.mainColor,
+                                       color2: UIColor.white) {
+                                        self.present(actionViewController, animated: true, completion: nil)
         }
         
     }

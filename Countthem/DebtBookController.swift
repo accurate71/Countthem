@@ -138,7 +138,9 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
                 toDelete = "Debt"
                 sharedIndexPath = indexPath
                 becomeFirstResponder()
-                showMenuSheet(cell: cell)
+                appAnimation.clickButton(view: cell, color1: UIColor.white, color2: appDesignHelper.anotherColor) {
+                    self.showMenuSheet(cell: cell)
+                }
                 
             }
         } else if collectionView == debtorCollectionView {
@@ -147,7 +149,9 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
                 toDelete = "Debtor"
                 sharedIndexPath = indexPath
                 becomeFirstResponder()
-                showMenuSheet(cell: cell)
+                appAnimation.clickButton(view: cell, color1: UIColor.white, color2: appDesignHelper.anotherColor) {
+                    self.showMenuSheet(cell: cell)
+                }
             }
         }
         
@@ -186,10 +190,6 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
         return true
-    }
-    
-    @objc func deleteAction(sender: Any) {
-        
     }
     
     func decorateCell(_ cell: UICollectionViewCell) {

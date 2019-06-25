@@ -16,6 +16,7 @@ class CurrencyViewController: UIViewController {
     //
     let currencyHelper = CurrencyHelper()
     let designHelper = AppDesingHelper()
+    let appAnimationHelper = AppAnimationHelper()
     
     //
     // MARK: - Variables
@@ -238,9 +239,7 @@ extension CurrencyViewController {
             let to = rightTF.text,
             let value = amountTextField.text {
             if from != "" && to != "" && value != "" {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.convertButton.center.y += 5
-                }) { _ in
+                appAnimationHelper.clickButton(view: sender, color1: designHelper.mainColor, color2: UIColor.white) {
                     self.currencyHelper.getValue(from: from, to: to, with: value)
                     self.view.addSubview(viewBack)
                     UIView.animate(withDuration: 0.3) {
