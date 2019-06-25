@@ -12,7 +12,7 @@ Welcome a simple app to manage your expenses.
 
 ## <a id="screenshots"></a>Screenshots 
 
-![Artboard](https://i.ibb.co/GMhZKFk/new-artboard.png)
+![Artboard](https://i.ibb.co/rpWBCvM/new-artboard.png)
 <br/><br/>
 
 
