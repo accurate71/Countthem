@@ -32,7 +32,7 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
         controll.translatesAutoresizingMaskIntoConstraints = false
         controll.tintColor = appDesignHelper.mainColor
         controll.addTarget(self, action: #selector(segmentedControllAction(_:)), for: .valueChanged)
-        controll.backgroundColor = UIColor(hexString: appDesignHelper.backgroundColor)
+        controll.backgroundColor = appDesignHelper.backgroundColor
         return controll
     }()
     let calendarView: FSCalendar = {
@@ -166,7 +166,7 @@ extension StatisticsViewController {
     func setupViews() {
         
         // Setups colours
-        view.backgroundColor = UIColor(hexString: appDesingHelper.backgroundColor)
+        view.backgroundColor = appDesingHelper.backgroundColor
         
         // Adding Subviews
         view.addSubview(segmentedControll)
@@ -205,7 +205,7 @@ extension StatisticsViewController {
         dayStack.addArrangedSubview(totalDayValue)
         monthStack.addArrangedSubview(totalMonthTitle)
         monthStack.addArrangedSubview(totalMonthValue)
-        mainInfoCell?.backgroundColor = UIColor(hexString: appDesingHelper.backgroundColor)
+        mainInfoCell?.backgroundColor = appDesingHelper.backgroundColor
         let stackView: UIStackView = {
             let stack = UIStackView(arrangedSubviews: [dayStack,monthStack])
             stack.translatesAutoresizingMaskIntoConstraints = false
@@ -219,8 +219,8 @@ extension StatisticsViewController {
         // Setups colours
         totalDayTitle.textColor = appDesingHelper.mainColor
         totalMonthTitle.textColor = appDesingHelper.mainColor
-        mainInfoCell?.backgroundColor = UIColor(hexString: appDesingHelper.backgroundColor)
-        calendarTableView.backgroundColor = UIColor(hexString: appDesingHelper.backgroundColor)
+        mainInfoCell?.backgroundColor = appDesingHelper.backgroundColor
+        calendarTableView.backgroundColor = appDesingHelper.backgroundColor
         calendarTableView.separatorStyle = .none
         
         // Adding subiew
@@ -258,7 +258,7 @@ extension StatisticsViewController {
         cell?.nameCategory.text = expenses[indexPath.row].category?.name
         cell?.nameExpense.text = expenses[indexPath.row].name
         cell?.expensePrice.text = "\(currencyHelper.getCurrentSign())\(expenses[indexPath.row].price)"
-        cell?.backgroundColor = UIColor(hexString: appDesingHelper.backgroundColor)
+        cell?.backgroundColor = appDesingHelper.backgroundColor
         return cell!
     }
     

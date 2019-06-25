@@ -23,7 +23,8 @@ class AddCategoryPageViewController: UIViewController {
     var categoriesIcons = ["breakfast","bus","cinema",
                            "coffee","dinner",
                            "games","groceries","internet",
-                           "lunch","mobile","shopping", "breakfast_new"]
+                           "lunch","mobile","shopping",
+                           "online_shopping", "turism"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

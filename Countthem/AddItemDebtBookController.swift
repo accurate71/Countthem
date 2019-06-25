@@ -39,7 +39,7 @@ class AddItemDebtBookController: UITableViewController {
     
     // Design Table view
     func setupTableView() {
-        tableView.backgroundColor = UIColor(hexString: appDesignHelper.backgroundColor)
+        tableView.backgroundColor = appDesignHelper.backgroundColor
     }
 
     // MARK: - Table view data source

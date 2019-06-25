@@ -36,7 +36,7 @@
 "Create and manage your categories" = "Создавай категории и управляй ими";
 "Manage Currency" = "Настрой отображение значка валюты";
 "Currency" = "Валюта";
-"Learn more about the app" = "Информация о приложении";
+"Like the app? Let me know" = "Нравится приложение? Дай мне знать";
 "About" = "О нас";
 "Categories" = "Категории";
 "Type a category name" = "Введить название категории";
@@ -52,7 +52,10 @@
 "Warning" = "Предупреждение";
 "Cancel" = "Отмена";
 "Something goes wrong, try again" = "Что-то пошло не так, попробуйсте снова";
-
-
+"Rate the App" = "Оценить приложение";
+"Report a bug" = "Сообщить об ошибке";
+"Found a bug? Let me know" = "Нашел ошибку? Расскажи о ней";
+"No Mail Accounts" = "Нет аккаунта почты";
+"Please, set up a Mail account in order to sent email." = "Чтобы отправить сообщение, пожалуйста настройте ваш Email аккаунт";
 
 

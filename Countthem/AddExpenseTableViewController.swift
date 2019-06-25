@@ -51,7 +51,14 @@ class AddExpenseTableViewController: UITableViewController {
             if name == "" || price == "" {
                 showAlert()
             } else {
-                let convertedPrice = Double(price)!
+                let convertedPrice: Double = {
+                    if price.contains(",") {
+                        let priceRus = price.replacingOccurrences(of: ",", with: ".")
+                        return Double(priceRus)!
+                    } else {
+                        return Double(price)!
+                    }
+                }()
                 ExpensesHelper().addExpense(name: name, price: convertedPrice, date: currentDate, category: category)
                 navigationController?.popViewController(animated: true)
             }

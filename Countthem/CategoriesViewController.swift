@@ -42,7 +42,6 @@ class CategoriesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavigationBar()
     }
     
@@ -97,7 +96,7 @@ class CategoriesViewController: UIViewController {
             collection.dataSource = self
             collection.delegate = self
             collection.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
-            collection.backgroundColor = UIColor.white
+            collection.backgroundColor = appDesingHelper.backgroundColor
             collection.translatesAutoresizingMaskIntoConstraints = false
             collection.isScrollEnabled = true
             collection.allowsSelection = true

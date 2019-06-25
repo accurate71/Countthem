@@ -49,13 +49,13 @@ class MainPageViewController: UIViewController {
         expenses = expensesHelper.getExpensesWithDate(date: currentDate)
         print("\(expenses.count)")
         total = expensesHelper.getTotal(arr: expenses)
-        setupNavigationBar()
+        setupNavigationAndTabBar()
         tabBarController?.tabBar.tintColor = appDesignHelper.mainColor
         
         setupViews()
     }
     
-    func setupNavigationBar() {
+    func setupNavigationAndTabBar() {
         setTitle()
         guard let navBar = navigationController?.navigationBar else {return}
         navBar.isTranslucent = false
@@ -65,7 +65,8 @@ class MainPageViewController: UIViewController {
     
     func setTitle() {
         let todayString = NSLocalizedString("Today", comment: "Today is shown")
-        self.title = "\(todayString): \(currentSign!)\(total ?? 0.0)"
+        self.title = "\(currentSign!)\(total ?? 0.0)"
+        self.navigationItem.title = "\(todayString): \(currentSign!)\(total ?? 0.0)"
     }
     // MARK: - Setting views
     func setupViews() {
@@ -101,7 +102,7 @@ class MainPageViewController: UIViewController {
             let table = UITableView()
             table.dataSource = self
             table.delegate = self
-            table.backgroundColor = UIColor.init(hexString: appDesignHelper.backgroundColor)
+            table.backgroundColor = appDesignHelper.backgroundColor
             table.register(ExpenseTableViewCell.self, forCellReuseIdentifier: "TableViewCell")
             table.translatesAutoresizingMaskIntoConstraints = false
             table.separatorStyle = .none
@@ -132,7 +133,7 @@ class MainPageViewController: UIViewController {
             let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
             view.translatesAutoresizingMaskIntoConstraints = false
             view.alpha = 0.5
-            view.image = UIImage(named: "empty_icon")
+            view.image = UIImage(named: "empty")
             return view
         }()
         
@@ -194,7 +195,7 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
         cell.imageView.image = UIImage(named: categoryImage)
         cell.nameCategoryLabel.text = categoryName
         cell.backgroundColor = UIColor.white
-        cell.layer.shadowColor = UIColor.init(hexString: appDesignHelper.backgroundColor).cgColor
+        cell.layer.shadowColor = appDesignHelper.backgroundColor.cgColor
         cell.layer.shadowOpacity = 1
         cell.layer.shadowOffset = .init(width: 1, height: 3)
         cell.layer.shadowRadius = 1

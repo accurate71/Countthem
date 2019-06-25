@@ -36,7 +36,7 @@
 "Create and manage your categories" = "Create and manage your categories";
 "Manage Currency" = "Manage Currency";
 "Currency" = "Currency";
-"Learn more about the app" = "Learn more about the app";
+"Like the app? Let me know" = "Like the app? Let me know";
 "About" = "About";
 "Categories" = "Categories";
 "Type a category name" = "Type a category name";
@@ -51,6 +51,9 @@
 "Warning" = "Warning";
 "Cancel" = "Cancel";
 "Something goes wrong, try again" = "Something goes wrong, try again";
-
-
+"Rate the App" = "Rate the App";
+"Report a bug" = "Report a bug";
+"Found a bug? Let me know" = "Found a bug? Let me know";
+"No Mail Accounts" = "No Mail Accounts";
+"Please, set up a Mail account in order to sent email." = "Please, set up a Mail account in order to sent email.";
 

@@ -74,13 +74,13 @@ class DebtBookController: UITableViewController {
     
     // Design Collection Views
     func setupCollectionViews() {
-        debtCollectionView.backgroundColor = UIColor(hexString: appDesignHelper.backgroundColor)
-        debtorCollectionView.backgroundColor = UIColor(hexString: appDesignHelper.backgroundColor)
+        debtCollectionView.backgroundColor = appDesignHelper.backgroundColor
+        debtorCollectionView.backgroundColor = appDesignHelper.backgroundColor
     }
     
     // Design Table view
     func setupTableView() {
-        tableView.backgroundColor = UIColor(hexString: appDesignHelper.backgroundColor)
+        tableView.backgroundColor = appDesignHelper.backgroundColor
     }
 }
 
@@ -93,7 +93,7 @@ extension DebtBookController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor.init(hexString: appDesignHelper.backgroundColor)
+        cell.backgroundColor = appDesignHelper.backgroundColor
     }
 }
 
@@ -222,7 +222,7 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func setupCollectionView(_ view: UICollectionView) {
-        view.backgroundColor = UIColor.init(hexString: appDesignHelper.backgroundColor)
+        view.backgroundColor = appDesignHelper.backgroundColor
     }
 }
 
