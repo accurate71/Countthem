@@ -115,46 +115,37 @@ class MainPageViewController: UIViewController {
         let messageView: UIView = {
             let view = UIView()
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.backgroundColor = UIColor.white
+            view.backgroundColor = appDesignHelper.backgroundColor
             return view
         }()
         let messageLabel: UILabel = {
-            let label = UILabel(frame: CGRect.zero)
+            let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 40, height: 80))
             label.translatesAutoresizingMaskIntoConstraints = false
             let emptyString = NSLocalizedString("Empty", comment: "The lis of expenses is empty")
             label.text = emptyString
             label.textColor = appDesignHelper.mainColor
             label.textAlignment = .center
-            label.font = label.font.withSize(32)
+            label.font = label.font.withSize(24)
             label.adjustsFontSizeToFitWidth = true
             return label
         }()
         let messageImage: UIImageView = {
-            let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+            let view = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: 100, height: 100))
             view.translatesAutoresizingMaskIntoConstraints = false
             view.alpha = 0.5
             view.image = UIImage(named: "empty")
             return view
         }()
         
-        let stack: UIStackView = {
-            let stack = UIStackView()
-            stack.translatesAutoresizingMaskIntoConstraints = false
-            stack.addArrangedSubview(messageLabel)
-            stack.addArrangedSubview(messageImage)
-            stack.axis = .vertical
-            stack.distribution = .equalSpacing
-            stack.spacing = 16
-            return stack
-        }()
-        messageImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        messageImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        messageView.addSubview(stack)
-        stack.widthAnchor.constraint(equalToConstant: messageView.frame.size.width).isActive = true
-        stack.centerYAnchor.constraint(equalTo: messageView.centerYAnchor, constant: 0).isActive = true
-        stack.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: 20).isActive = true
-        stack.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -20).isActive = true
+        
+        messageView.addSubview(messageLabel)
+        messageView.addSubview(messageImage)
+        
+        messageLabel.centerXAnchor.constraint(equalTo: messageView.centerXAnchor).isActive = true
+        messageLabel.centerYAnchor.constraint(equalTo: messageView.centerYAnchor).isActive = true
+        messageImage.centerXAnchor.constraint(equalTo: messageView.centerXAnchor).isActive = true
+        messageImage.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 20).isActive = true
         // MARK: Adding views and constraits
         self.view.addSubview(myCollectionView)
         // FIXME: - The problem is if an user deletes the last item, the view didn't change background and the lable isn't visible

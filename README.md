@@ -12,8 +12,9 @@ Welcome a simple app to manage your expenses.
 
 ## <a id="screenshots"></a>Screenshots 
 
-![Artboard](https://i.ibb.co/8z21SJQ/Artboard.png)
+![Artboard](https://i.ibb.co/GMhZKFk/new-artboard.png)
 <br/><br/>
+
 
 ### Main screen
 Here is the Main Page view. An user can add or delete the expenses which the user add during a day. Also on the screen, the user can track the total amount of spent money.
@@ -41,9 +42,11 @@ In the part of the app, A user can change the showed icon in the app and also to
 ## Built with:
 
 * [FSCalendar](https://github.com/WenchaoD/FSCalendar) - A superiorly awesome iOS7+ calendar control, compatible with Objective-C and Swift.
-* [Chameleon](https://github.com/ViccAlexander/Chameleon) - Chameleon is a lightweight, yet powerful, color framework for iOS (Objective-C & Swift)
+* [Chameleon](https://github.com/ViccAlexander/Chameleon) -  a lightweight, yet powerful, color framework for iOS (Objective-C & Swift)
 * [Alamofire](https://github.com/Alamofire/Alamofire) - an HTTP networking library written in Swift.
 * [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - makes it easy to deal with JSON data in Swift.
+* [SwiftyPlistManager](https://github.com/rebeloper/SwiftyPlistManager) - a lightweight plist data management framework for iOS 10.3+.
+* [SimplePDF](https://github.com/nRewik/SimplePDF) - a wrapper of UIGraphics PDF context written in Swift.
 
 ## Authors
 
