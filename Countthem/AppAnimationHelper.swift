@@ -46,4 +46,14 @@ class AppAnimationHelper {
         CATransaction.commit()
     }
     
+    func shakeError(view: UIView) {
+        print("shaking")
+        let shakeAnim = CASpringAnimation(keyPath: "position.x")
+        shakeAnim.fromValue = view.center.x
+        shakeAnim.toValue = view.center.x + 10
+        shakeAnim.damping = 2.0
+        shakeAnim.duration = shakeAnim.settlingDuration
+        view.layer.add(shakeAnim, forKey: "viewShaking")
+    }
+    
 }

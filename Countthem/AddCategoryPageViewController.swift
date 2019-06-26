@@ -15,6 +15,8 @@ enum AlertError {
 
 class AddCategoryPageViewController: UIViewController {
     
+    let animationHelper = AppAnimationHelper()
+    
     var name: String?
     var icon: String?
     var tableView: UITableView?

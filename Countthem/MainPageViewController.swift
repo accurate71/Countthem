@@ -248,6 +248,7 @@ extension MainPageViewController: UITableViewDelegate, UITableViewDataSource {
             self.total = self.expensesHelper.getTotal(arr: self.expenses)
             self.setTitle()
             AppAnimationHelper().animationDeleting(for: tableView)
+            self.viewWillAppear(true)
         }
         deleteAction.backgroundColor = appDesignHelper.mainColor
         

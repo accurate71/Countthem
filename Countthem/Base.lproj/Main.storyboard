@@ -157,6 +157,25 @@
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
+                                                    <view key="backgroundView" contentMode="scaleToFill" id="Z72-yK-9zk">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <subviews>
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="W7D-qd-iup">
+                                                                <rect key="frame" x="185" y="47" width="42" height="21"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="W7D-qd-iup" firstAttribute="centerX" secondItem="Z72-yK-9zk" secondAttribute="centerX" id="3sL-0R-fio"/>
+                                                            <constraint firstItem="W7D-qd-iup" firstAttribute="centerY" secondItem="Z72-yK-9zk" secondAttribute="centerY" id="hRa-a5-syA"/>
+                                                            <constraint firstAttribute="trailing" secondItem="W7D-qd-iup" secondAttribute="trailing" constant="20" id="nWv-3p-BtB"/>
+                                                            <constraint firstItem="W7D-qd-iup" firstAttribute="leading" secondItem="Z72-yK-9zk" secondAttribute="leading" constant="20" id="ooj-lp-qZF"/>
+                                                        </constraints>
+                                                    </view>
                                                     <cells>
                                                         <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DebtCell" id="hO7-uQ-eXf" customClass="Debt_DebtorsCollectionViewCell" customModule="Countthem" customModuleProvider="target">
                                                             <rect key="frame" x="16" y="17.5" width="180" height="80"/>
@@ -253,6 +272,25 @@
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
+                                                    <view key="backgroundView" contentMode="scaleToFill" id="LKp-Or-fF4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <subviews>
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pu-us-saG">
+                                                                <rect key="frame" x="187" y="47" width="45" height="21"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="5pu-us-saG" firstAttribute="centerY" secondItem="LKp-Or-fF4" secondAttribute="centerY" id="7tD-J5-jct"/>
+                                                            <constraint firstItem="5pu-us-saG" firstAttribute="leading" secondItem="LKp-Or-fF4" secondAttribute="leading" constant="20" id="OUk-q7-3rr"/>
+                                                            <constraint firstItem="5pu-us-saG" firstAttribute="centerX" secondItem="LKp-Or-fF4" secondAttribute="centerX" id="Sto-vv-v85"/>
+                                                            <constraint firstAttribute="trailing" secondItem="5pu-us-saG" secondAttribute="trailing" constant="20" id="mrG-sL-2pm"/>
+                                                        </constraints>
+                                                    </view>
                                                     <cells>
                                                         <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DebtCell" id="NmI-66-jdd" customClass="Debt_DebtorsCollectionViewCell" customModule="Countthem" customModuleProvider="target">
                                                             <rect key="frame" x="16" y="17" width="180" height="80"/>
@@ -339,6 +377,8 @@
                         <outlet property="debtTitleLabel" destination="olC-lS-X9j" id="uzv-mg-or1"/>
                         <outlet property="debtorCollectionView" destination="4Rt-x8-xzJ" id="T03-Yg-ae5"/>
                         <outlet property="debtorTitleLabel" destination="yNI-Or-KKy" id="ung-Bb-AKp"/>
+                        <outlet property="emptyLabel" destination="W7D-qd-iup" id="ybg-eg-Fah"/>
+                        <outlet property="emptyLabel2" destination="5pu-us-saG" id="kDf-4s-AMp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsu-j3-ojw" userLabel="First Responder" sceneMemberID="firstResponder"/>

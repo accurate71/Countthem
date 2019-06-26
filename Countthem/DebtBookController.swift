@@ -17,6 +17,8 @@ class DebtBookController: UITableViewController {
     @IBOutlet weak var debtCollectionView: UICollectionView!
     @IBOutlet weak var debtorCollectionView: UICollectionView!
     // Titles
+    @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet weak var emptyLabel2: UILabel!
     @IBOutlet weak var debtTitleLabel: UILabel!
     @IBOutlet weak var debtorTitleLabel: UILabel!
     // Buttons
@@ -44,16 +46,14 @@ class DebtBookController: UITableViewController {
         
         addButton1.tintColor = appDesignHelper.mainColor
         addButton2.tintColor = appDesignHelper.mainColor
+        
+        setDebtsDebtors()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        debtsNames = debtBookHelper.getDebts()
-        debtCollectionView.reloadData()
-        
-        debtorsNames = debtBookHelper.getDebtors()
-        debtorCollectionView.reloadData()
+        setDebtsDebtors()
         
         guard let navBar = navigationController?.navigationBar else { return }
         guard let tabBar = tabBarController?.tabBar else { return }
@@ -62,6 +62,29 @@ class DebtBookController: UITableViewController {
         setupTableView()
         setupCollectionViews()
         setupTitles()
+    }
+    
+    func setDebtsDebtors() {
+        debtsNames = debtBookHelper.getDebts()
+        debtorsNames = debtBookHelper.getDebtors()
+        
+        if debtsNames.isEmpty {
+            emptyLabel.isHidden = false
+            emptyLabel.text = "Your list of debts is empty"
+            emptyLabel.textColor = appDesignHelper.mainColor
+        } else {
+            emptyLabel.isHidden = true
+        }
+        
+        if debtorsNames.isEmpty {
+            emptyLabel2.isHidden = false
+            emptyLabel2.text = "Your list of debts is empty"
+            emptyLabel2.textColor = appDesignHelper.mainColor
+        } else {
+            emptyLabel2.isHidden = true
+        }
+        debtCollectionView.reloadData()
+        debtorCollectionView.reloadData()
     }
     
     // Design Titles
@@ -174,6 +197,7 @@ extension DebtBookController: UICollectionViewDelegate, UICollectionViewDataSour
                     self.debtorCollectionView.reloadData()
                     self.appAnimation.animationDeleting(for: self.debtorCollectionView)
                 }
+                self.viewDidLoad()
             }
         }
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { (action) in

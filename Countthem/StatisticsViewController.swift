@@ -123,6 +123,7 @@ class StatisticsViewController: UIViewController, FSCalendarDelegate, FSCalendar
     var currentDate = Date()
     var dateOfCalendar: Date?
     var totalDay: Double = 0.0
+    var totalMonth: Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -438,7 +439,6 @@ extension StatisticsViewController {
     }
     
     func setTotalMonth(expenses: [Expense], date: Date) -> Float {
-        var total: Float = 0.0
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "LLLL"
         let nameOfMonth = dateFormatter.string(from: date)
@@ -448,10 +448,10 @@ extension StatisticsViewController {
         for expense in expenses {
             let monthToCompare = dateFormatter.string(from: expense.date!)
             if nameOfMonth == monthToCompare {
-                total += Float(expense.price)
+                totalMonth += Float(expense.price)
             }
         }
-        return total
+        return totalMonth
     }
     
 }
@@ -496,8 +496,11 @@ extension StatisticsViewController {
     func cleanData() {
         let alertController = UIAlertController(title: nil, message: "Are you sure to delete all data?", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "OK", style: .destructive) { _ in
-            print("Deleting...")
-            print("Done!")
+            let expenses = self.expensesHelper.getExpenses()
+            for expense in expenses {
+                self.expensesHelper.removeExpenses(expense: expense)
+                self.showDoneMessage()
+            }
         }
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             print("Cancel button tapped")
@@ -505,6 +508,20 @@ extension StatisticsViewController {
         alertController.addAction(okButton)
         alertController.addAction(cancelButton)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func showDoneMessage() {
+        let alertController = UIAlertController(title: nil, message: "Done!", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okButton)
+        present(alertController, animated: true) {
+            self.allExpenses = self.expensesHelper.getExpenses()
+            self.expenses = self.expensesHelper.getExpensesWithDate(date: self.currentDate)
+            self.totalDay = 0.0
+            self.totalMonth = 0.0
+            self.viewWillAppear(true)
+            self.calendarTableView.reloadData()
+        }
     }
     
 }
